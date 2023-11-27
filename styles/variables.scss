@@ -1,0 +1,19 @@
+//colors
+$red: red;
+// $blue: blue;
+$blue: #fec7c7;
+$white: white;
+
+//fonts
+$fSize: 100px;
+$buttonSize: 30px;
+
+@mixin buttonStyle($fontSize, $color, $bR, $w, $border, $mHeigth, $bColor) {
+    width: $w;
+    min-height: $mHeigth;
+    background-color: $bColor;
+    border-radius: $bR;
+    border: $border;
+    font-size: $fontSize; 
+    color: $color;
+}
