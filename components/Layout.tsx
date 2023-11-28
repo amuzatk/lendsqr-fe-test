@@ -3,6 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/Layout.module.scss";
 import NavBar from "./shared/NavBar";
+import SideBar from "./shared/SideBar";
 
 type Props = {
   children?: ReactNode;
@@ -14,8 +15,10 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
     <NavBar />
   <div className={styles.main}>
     <div className={styles.layout}>
-      <div className={styles.sidebar}>
-        <div className={styles.menu}> Sidebar menus</div>
+    <div >
+      {/* <div className={styles.sidebar}> */}
+        {/* <div className={styles.menu}> Sidebar menus</div> */}
+        <SideBar />
       </div>
       <div className={styles.content}>
         <h1>Users</h1>

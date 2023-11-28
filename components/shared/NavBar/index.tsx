@@ -1,12 +1,91 @@
-import React from 'react';
-import styles from '../../../styles/Navbar.module.scss';
+// import React from 'react';
+// import styles from '../../../styles/Navbar.module.scss';
+
+// const NavBar = () => {
+//   return (
+//     <div className={styles.main}>
+//       This is for Navbar
+//     </div>
+//   )
+// }
+
+// export default NavBar
+
+import React, { useState } from "react";
+import {
+  AiOutlineMenu,
+  AiOutlineClose,
+  AiOutlineSearch,
+  AiOutlineUser,
+} from "react-icons/ai";
+import styles from "../../../styles/Navbar.module.scss";
+import Logo from "../../../assets/logo/logo.webp";
+import Bell from "../../../assets/icons/bell.webp";
+import Dropdown from "../../../assets/icons/Dropdown.webp";
+import User from "../../../assets/images/LoginUser.webp";
+// import { ReactComponent as Bell } from "../../asset/pablo-sign-in 1.svg";
+// import { ReactComponent as BellIcon } from "../../../assets/icons/bell2.svg";
+import Image from "next/image";
+// import BellIcon from '../../../components/svgIcons/BellIcon';
+// import {BellIcon, BankAccountIcon} from '../../../constants/svgs';
 
 const NavBar = () => {
-  return (
-    <div className={styles.main}>
-      This is for Navbar
-    </div>
-  )
-}
+  const [nav, setNav] = useState(false);
 
-export default NavBar
+  return (
+    <header className={styles.navbar}>
+      {/* <a href="/"> */}
+      <Image src={Logo} alt="/" className={styles.log} />
+      {/* </a> */}
+      <div className={styles.search}>
+        <div className={styles.input}>
+          <input type="text" placeholder="Search for anything" />
+        </div>
+
+        <div className={styles.icon}>
+          <AiOutlineSearch />
+        </div>
+      </div>
+      <nav>
+        {/* <ul className={nav ? [styles.menu, styles.active].join(' ') : [styles.menu] }> */}
+        <ul
+          className={nav ? [styles.menu, styles.active].join(" ") : styles.menu}
+        >
+          <li className={styles.docs}>
+            <a href="/">Docs</a>
+          </li>
+           <li>
+            <Image src={Bell} alt="Bell Icon" width={26} height={26} />
+          </li>
+          {/* <li className={styles.user}>
+          <Image src={User} alt="Bell Icon" width={48} height={48} />
+          </li>
+          <li className={styles.name}>
+            Adedeji
+          </li>
+          <li className={styles.drop}>
+          <Image src={Dropdown} alt="Bell Icon" width={20} height={20} />
+          </li> */}
+           <li className={styles.user}>
+            <div className={styles.info}>
+          <Image src={User} alt="Bell Icon" width={48} height={48} />
+
+          <span className={styles.name}>
+            Adedeji
+          </span>
+          <span className={styles.drop}>
+          <Image src={Dropdown} alt="Bell Icon" width={20} height={20} />
+          </span>
+          </div>
+          </li>
+       
+        </ul>
+      </nav>
+      <div className={styles.mobile_btn} onClick={() => setNav(!nav)}>
+        {nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
+      </div>
+    </header>
+  );
+};
+
+export default NavBar;

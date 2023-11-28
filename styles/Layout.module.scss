@@ -1,25 +1,45 @@
+
+// body {
+//     padding: 0;
+//     margin: 0;
+//     box-sizing: border-box;
+//   }
+
 .main{
     // padding: 10px;
-    height: 100vh;
+    height: 100%;
+    // height: 100vh;
     width: 100%;
-    border: 1px solid green;
+    // border: 1px solid green;
     // background-color: rgb(255, 254, 254);
     background-color: rgb(248, 247, 247);
+    // box-shadow:  0   0  2px rgba(0, 0, 0, 0.4);
+    // box-shadow: 0 0 2px gray;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 
+
+    // padding: 0;
+    // margin: 0;
+    // box-sizing: border-box;
 }
 .layout{
     display: flex;
+    // height: 100vh;
+    // border: 1px solid red;
+    // flex-direction: row;
+    // gap: 0px;
+
 }
 .sidebar{
     width: 283px;
     height: 1574px;
     // min-height: 100%;
     // width: 200px;
-    margin-right: 20px;
+    // margin-right: 20px;
     // margin-top: 10rem;
     background-color: white;
     box-shadow: 0 0 2px gray;
-    color: white;
+    // color: white;
 }
 .logo h6 {
     font-size: 1.5rem;
@@ -61,41 +81,39 @@
     color: rgb(51, 1, 1);
 }
 .content{
-    border: 1px solid yellow;
+    // border: 1px solid yellow;
     width: 100%;
     // margin-top: 66px;
     // margin-left: 28px;
-    margin: 66px 28px;
+
+    margin: 66px 32px;
+
     // padding: 66px 28px;
 }
-.header{
-    height: 20vh;
-    margin-bottom: 20px;
-    box-shadow: 0 0 2px gray;
-    background-color: white;
-    // width: 50%;
-}
-.headercontent{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    /* padding: 15px; */
-    height: 50px;
-    margin: 0px 15px;
-    font-size: 1.2rem;
+// .header{
+//     height: 20vh;
+//     margin-bottom: 20px;
+//     box-shadow: 0 0 2px gray;
+//     background-color: white;
+// }
+// .headercontent{
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-end;
+//     height: 50px;
+//     margin: 0px 15px;
+//     font-size: 1.2rem;
 
-}
-.headercontent i{
-    margin-right: 20px;
-    /* font-size: 1.2rem; */
-}
-.headercontent a{
-    text-decoration: none;
-    text-transform: uppercase;
-    margin: 0px 10px;
-    color:green;
-    /* font-size: 1.2rem; */
-}
+// }
+// .headercontent i{
+//     margin-right: 20px;
+// }
+// .headercontent a{
+//     text-decoration: none;
+//     text-transform: uppercase;
+//     margin: 0px 10px;
+//     color:green;
+// }
 .body{
     // height: 85vh;
     // margin-bottom: 20px;
