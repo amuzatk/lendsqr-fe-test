@@ -19,10 +19,11 @@ type Props = {
 
 const Layout = ({ children, title = "This is the default title" }: Props) => {
   const analyticsData: AnalyticsData[] = [
-    { image: "/assets/icons/bell.webp", title: "Users", amount: "2,453" },
-    { image: "/assets/icons/bell.webp", title: "Revenue", amount: "5,678" },
-    { image: "/assets/icons/bell.webp", title: "Users2", amount: "2,453" },
-    { image: "/assets/icons/bell.webp", title: "Revenue2", amount: "5,678" },
+    { image: "/assets/icons/AnalyticIcon1.webp", title: "USERS", amount: "2,453" },
+    { image: "/assets/icons/AnalyticIcon2.webp", title: "ACTIVE USERS", amount: "5,678" },
+    { image: "/assets/icons/AnalyticIcon3.webp", title: "USERS WITH LOANS", amount: "2,453" },
+    { image: "/assets/icons/AnalyticIcon4.webp", title: "USERS WITH SAVINGS", amount: "5,678" },
+    // image: '/assets/images/StorefrontSectionThree.webp',
   ];
 
   return (

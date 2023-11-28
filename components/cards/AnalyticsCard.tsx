@@ -37,6 +37,7 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({ data }) => {
     <div className={styles.container}>
       <div className={styles.main}>
         <Image src={image} alt={`${title} Icon`} width={40} height={40} />
+        {/* <Image src={image} alt='' width={40} height={40} /> */}
         <p>{title}</p>
         <span className={styles.amount}>{amount}</span>
       </div>

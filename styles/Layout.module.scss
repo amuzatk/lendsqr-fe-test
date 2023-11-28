@@ -86,7 +86,7 @@
     // margin-top: 66px;
     // margin-left: 28px;
 
-    margin: 66px 32px;
+    margin: 66px 50px;
 
     // padding: 66px 28px;
 
@@ -103,12 +103,13 @@ color: #213F7D;
     }
 
     .header{
-        border: 1px solid red;
-        display: flex;
-        justify-content:space-between;
-        align-items: start;
-        // display: grid;
-        // grid-template: 1fr 1fr 1fr 1fr;
+        // border: 1px solid red;
+        // display: flex;
+        // justify-content:space-between;
+        // align-items: start;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        column-gap: 18px;
     }
 }
 // .header{
