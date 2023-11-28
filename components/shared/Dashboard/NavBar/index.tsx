@@ -18,10 +18,10 @@ import {
   AiOutlineSearch,
 } from "react-icons/ai";
 import styles from "../../../../styles/Navbar.module.scss";
-import Logo from "../../../../assets/logo/logo.webp";
-import Bell from "../../../../assets/icons/bell.webp";
-import Dropdown from "../../../../assets/icons/Dropdown.webp";
-import User from "../../../../assets/images/LoginUser.webp";
+import Logo from "../../../../public/assets/logo/logo.webp";
+import Bell from "../../../../public/assets/icons/bell.webp";
+import Dropdown from "../../../../public/assets/icons/Dropdown.webp";
+import User from "../../../../public/assets/images/LoginUser.webp";
 import Image from "next/image";
 
 const NavBar = () => {
