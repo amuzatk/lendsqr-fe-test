@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Table, Popover, Button } from "antd";
+import React, { useEffect, useState } from "react";
+import { Table, Popover, Button, Form, Input, Select } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import Filter from "../../public/assets/icons/Filter.png";
 import ViewDetail from "../../public/assets/icons/ViewDetail.png";
@@ -18,15 +18,43 @@ interface DataType {
 }
 
 const UserInfo: React.FC = () => {
-
+  const [form] = Form.useForm();
+  const [visible, setVisible] = useState(false);
   const [popoverVisibility, setPopoverVisibility] = useState<Array<boolean>>(
     []
   );
+  const [data, setData] = useState<Array<DataType>>([]);
 
   // Initialize the popover visibility state for each item to false
   const initializePopoverVisibility = (data: DataType[]) => {
     const initialState = data.map(() => false);
     setPopoverVisibility(initialState);
+  };
+
+  // Call initializePopoverVisibility once when the component mounts
+  useEffect(() => {
+    const customData = generateCustomData();
+    initializePopoverVisibility(customData);
+    setData(customData);
+  }, []);
+  // Function to generate custom data
+  const generateCustomData = (): DataType[] => {
+    const customData: DataType[] = [];
+
+    for (let i = 1; i <= 10; i++) {
+      customData.push({
+        key: i.toString(),
+        organization: `Organization${i}`,
+        surname: `User${i}`,
+        email: `user${i}@example.com`,
+        phone: `090878990${i}`,
+        date: `01-01-23`,
+        status: i % 2 === 0 ? "Active" : "Inactive",
+        // status: i % 2 === 0 ? "Active" : "Inactive"? "Pending" : "Blacklist",
+      });
+    }
+
+    return customData;
   };
 
   // Call initializePopoverVisibility once when the component mounts
@@ -56,23 +84,80 @@ const UserInfo: React.FC = () => {
           }}
         />
       ),
-      filters: [
-        {
-          text: "Lenqsqr4",
-          value: "Lenqsqr4",
-        },
-        {
-          text: "Lenqsqr",
-          value: "Lenqsqr",
-        },
-        {
-          text: "Lenqsqr2",
-          value: "Lenqsqr2",
-        },
-      ],
-      filterSearch: true,
-      onFilter: (value: string, record) =>
-        record.organization.startsWith(value),
+      onFilterDropdownVisibleChange: (newVisible) => {
+        if (newVisible) {
+          form.resetFields();
+        }
+        setVisible(newVisible);
+      },
+      filterDropdown: (
+        <div style={{ padding: 8 }}>
+          <Form
+            form={form}
+            layout="vertical"
+            initialValues={{ organization: [] }}
+            onFinish={(values) => {
+              // Apply the selected filters for ORGANIZATION
+              const filteredData = data.filter((item) =>
+                values.organization.includes(item.organization)
+              );
+              setData(filteredData);
+              setVisible(false); // Close the filter dialog
+            }}
+          >
+            <Form.Item label="Organization" name="organization">
+              <Select mode="multiple" placeholder="Select organizations">
+                {data.map((item) => (
+                  <Select.Option
+                    key={item.organization}
+                    value={item.organization}
+                  >
+                    {item.organization}
+                  </Select.Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item label="Username" name="username">
+              <Input placeholder="Enter username" />
+            </Form.Item>
+            <Form.Item label="Email" name="email">
+              <Input placeholder="Enter email" />
+            </Form.Item>
+            <Form.Item label="Date" name="date">
+              <Input placeholder="Enter date" />
+            </Form.Item>
+            <Form.Item label="Phone Number" name="phone">
+              <Input placeholder="Enter phone number" />
+            </Form.Item>
+            <Form.Item label="Status" name="status">
+              <Select mode="multiple" placeholder="Select statuses">
+                {["Active", "Inactive", "Blacklist", "Pending"].map(
+                  (status) => (
+                    <Select.Option key={status} value={status}>
+                      {status}
+                    </Select.Option>
+                  )
+                )}
+              </Select>
+            </Form.Item>
+            <Form.Item>
+              <Button
+                htmlType="button"
+                onClick={() => {
+                  form.resetFields();
+                  setData(generateCustomData());
+                  setVisible(false); // Close the filter dialog
+                }}
+              >
+                Reset
+              </Button>
+              <Button type="primary" htmlType="submit">
+                Filter
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      ),
       width: "30%",
     },
     {
@@ -334,54 +419,6 @@ const UserInfo: React.FC = () => {
     },
   ];
 
-  const data: DataType[] = [
-    {
-      key: "1",
-      organization: "Lenqsqr",
-      surname: "Adedeji",
-      email: "kaz@gmail.com",
-      phone: "09087899",
-      date: "01-02-23",
-      status: "Inactive",
-    },
-    {
-      key: "2",
-      organization: "Lenqsqr2",
-      surname: "Adedeji2",
-      email: "kaz2@gmail.com",
-      phone: "09087899099",
-      date: "02-02-23",
-      status: "Pending",
-    },
-    {
-      key: "3",
-      organization: "Lenqsqr3",
-      surname: "Adedeji3",
-      email: "kaz3@gmail.com",
-      phone: "0908789933333",
-      date: "03-02-23",
-      status: "Active",
-    },
-    {
-      key: "4",
-      organization: "Lenqsqr4",
-      surname: "Adedeji4",
-      email: "kaz4@gmail.com",
-      phone: "09087899",
-      date: "04-02-23",
-      status: "Blacklisted",
-    },
-    {
-      key: "5",
-      organization: "Lenqsqr5",
-      surname: "Adedeji5",
-      email: "kaz5@gmail.com",
-      phone: "0908789955555",
-      date: "05-02-23",
-      status: "Inactive",
-    },
-  ];
-
   const onChange: TableProps<DataType>["onChange"] = (
     pagination,
     filters,
@@ -391,6 +428,14 @@ const UserInfo: React.FC = () => {
     console.log("params", pagination, filters, sorter, extra);
   };
 
-  return <Table columns={columns} dataSource={data} onChange={onChange} />;
+  return (
+    <div style={{
+      // border:"4px solid red", 
+      marginTop:"40px"
+      }}>
+      <Table columns={columns} dataSource={data} onChange={onChange} />
+    </div>
+  );
 };
+
 export default UserInfo;
