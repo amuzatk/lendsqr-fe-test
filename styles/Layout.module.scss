@@ -110,6 +110,7 @@ color: #213F7D;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         column-gap: 18px;
+        row-gap: 18px;
     }
 }
 // .header{

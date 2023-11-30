@@ -4,20 +4,16 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc",
-    "analyze": "next build && npx next bundle-analyzer"
+    "type-check": "tsc"
   },
   "dependencies": {
-    "antd": "^5.11.5",
-    "chokidar": "^3.5.3",
-    "glob-parent": "^6.0.2",
+    "antd": "^5.9.4",
     "less": "^4.2.0",
-    "next": "^14.0.3",
+    "next": "^13.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "sass": "^1.69.5",
-    "watchpack-chokidar2": "^2.0.1",
     "webpack": "^5.89.0"
   },
   "devDependencies": {
