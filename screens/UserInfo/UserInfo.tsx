@@ -243,81 +243,6 @@ const UserInfo: React.FC = () => {
       onFilter: (value: string, record) => record.status.startsWith(value),
       width: "30%",
     },
-    // {
-    //   title: "ACTIONS",
-    //   dataIndex: "actions",
-    //   render: (text, record) => (
-    //     <Tooltip
-    //       title={
-    //         tooltipVisible && (
-    //           <div>
-    //             <p>Navigate to detail</p>
-    //             <p>Blacklist</p>
-    //             {/* Add other text or actions as needed */}
-    //           </div>
-    //         )
-    //       }
-    //       visible={tooltipVisible}
-    //       onVisibleChange={handleIconClick}
-    //       placement="top"
-    //     >
-    //       <Button type="link">
-    //         <Image src={Filter} alt="Custom Icon" style={{ width: 16, height: 16 }} />
-    //       </Button>
-    //     </Tooltip>
-    //   ),
-    // },
-
-    //  {
-    //   title: "ACTIONS",
-    //   dataIndex: "actions",
-    //   render: (text, record) => (
-    //     <Tooltip
-    //       title={
-    //         tooltipVisible && (
-    //           <div style={{width:"200px"}}>
-    //             <p>Navigate to detail</p>
-    //             <p>Blacklist</p>
-    //             <p>Navigate to detail</p>
-    //             {/* Add other text or actions as needed */}
-    //           </div>
-    //         )
-    //       }
-    //       visible={tooltipVisible}
-    //       onVisibleChange={handleIconClick}
-    //       placement="topLeft" // Try changing the placement
-    //     >
-    //       <Button type="link">
-    //         <Image src={Filter} alt="Custom Icon" style={{ width: 16, height: 16 }} />
-    //       </Button>
-    //     </Tooltip>
-    //   ),
-
-    // },
-
-    // {
-    //   title: "ACTIONS",
-    //   dataIndex: "actions",
-    //   render: (text, record) => (
-    //     <Popover
-    //       title="Actions"
-    //       content={
-    //         <div>
-    //           <p>Navigate to detail</p>
-    //           <p>Blacklist</p>
-    //           {/* Add other text or actions as needed */}
-    //         </div>
-    //       }
-    //       visible={overlayVisible}
-    //       trigger="click"
-    //       onVisibleChange={handleIconClick}
-    //     >
-    //       <Button type="link">
-    //         <Image src={Filter} alt="Custom Icon" style={{ width: 16, height: 16 }} />
-    //       </Button>
-    //     </Popover>
-    //   ),
-    // },
 
     {
       // title: "ACTIONS",
@@ -340,14 +265,10 @@ const UserInfo: React.FC = () => {
             >
               <div 
               style={{
-                // width: "180px",
-                // height: "130px",
-                // borderRadius: "4px",
-                // border: "1px solid gray",
                 display:"flex",
                 flexDirection:"row",
-                gap:"5px",
-                justifyContent:"center",
+                gap:"15px",
+                // justifyContent:"center",
                 alignItems:"center"
               }}
               >
@@ -372,7 +293,15 @@ const UserInfo: React.FC = () => {
                 </p>
               </div>
 
-              <div>
+              <div
+               style={{
+                display:"flex",
+                flexDirection:"row",
+                gap:"15px",
+                // justifyContent:"center",
+                alignItems:"center"
+              }}
+              >
                 <Image
                   src={Filter}
                   alt="Custom Filter Icon"
@@ -383,7 +312,15 @@ const UserInfo: React.FC = () => {
                 />
                 <p>Blacklist User</p>
               </div>
-              <div>
+              <div
+               style={{
+                display:"flex",
+                flexDirection:"row",
+                gap:"15px",
+                // justifyContent:"center",
+                alignItems:"center"
+              }}
+              >
                 <Image
                   src={Filter}
                   alt="Custom Filter Icon"
