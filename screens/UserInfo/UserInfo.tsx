@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Table, Popover, Modal, Button } from "antd";
+import { Table, Popover, Button } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import Filter from "../../public/assets/icons/Filter.png";
+import ViewDetail from "../../public/assets/icons/ViewDetail.png";
+import Blacklist from "../../public/assets/icons/Blacklist.png";
+import Activate from "../../public/assets/icons/Activate.png";
+import ActionButton from "../../public/assets/icons/ActionButton.png";
 import Image from "next/image";
-
 interface DataType {
   key: React.Key;
   surname: string;
@@ -15,11 +18,6 @@ interface DataType {
 }
 
 const UserInfo: React.FC = () => {
-  // const [overlayVisible, setOverlayVisible] = useState(false);
-
-  // const handleIconClick = () => {
-  //   setOverlayVisible(!overlayVisible);
-  // };
 
   const [popoverVisibility, setPopoverVisibility] = useState<Array<boolean>>(
     []
@@ -72,7 +70,6 @@ const UserInfo: React.FC = () => {
           value: "Lenqsqr2",
         },
       ],
-      // filterMode: "tree",
       filterSearch: true,
       onFilter: (value: string, record) =>
         record.organization.startsWith(value),
@@ -106,7 +103,6 @@ const UserInfo: React.FC = () => {
           value: "Lenqsqr2",
         },
       ],
-      // filterMode: "tree",
       filterSearch: true,
       onFilter: (value: string, record) => record.surname.startsWith(value),
       width: "30%",
@@ -139,7 +135,6 @@ const UserInfo: React.FC = () => {
           value: "Lenqsqr2",
         },
       ],
-      // filterMode: "tree",
       filterSearch: true,
       onFilter: (value: string, record) => record.email.startsWith(value),
       width: "30%",
@@ -172,7 +167,6 @@ const UserInfo: React.FC = () => {
           value: "Lenqsqr2",
         },
       ],
-      // filterMode: "tree",
       filterSearch: true,
       onFilter: (value: string, record) => record.phone.startsWith(value),
       width: "30%",
@@ -205,7 +199,6 @@ const UserInfo: React.FC = () => {
           value: "Lenqsqr2",
         },
       ],
-      // filterMode: "tree",
       filterSearch: true,
       onFilter: (value: string, record) => record.date.startsWith(value),
       width: "30%",
@@ -238,42 +231,36 @@ const UserInfo: React.FC = () => {
           value: "Lenqsqr2",
         },
       ],
-      // filterMode: "tree",
       filterSearch: true,
       onFilter: (value: string, record) => record.status.startsWith(value),
       width: "30%",
     },
 
     {
-      // title: "ACTIONS",
       dataIndex: "actions",
       render: (text, record, index) => (
         <Popover
-          // title="Actions"
           content={
             <div
               style={{
                 width: "180px",
                 height: "130px",
                 borderRadius: "4px",
-                // border: "1px solid gray",
-                display:"flex",
-                flexDirection:"column",
-                // justifyContent:"center",
-                // alignItems:"center"
+                display: "flex",
+                flexDirection: "column",
               }}
+              // className="" for media and positioning min-width 1000px
             >
-              <div 
-              style={{
-                display:"flex",
-                flexDirection:"row",
-                gap:"15px",
-                // justifyContent:"center",
-                alignItems:"center"
-              }}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "15px",
+                  alignItems: "center",
+                }}
               >
                 <Image
-                  src={Filter}
+                  src={ViewDetail}
                   alt="Custom Filter Icon"
                   style={{
                     width: 16,
@@ -294,16 +281,15 @@ const UserInfo: React.FC = () => {
               </div>
 
               <div
-               style={{
-                display:"flex",
-                flexDirection:"row",
-                gap:"15px",
-                // justifyContent:"center",
-                alignItems:"center"
-              }}
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "15px",
+                  alignItems: "center",
+                }}
               >
                 <Image
-                  src={Filter}
+                  src={Blacklist}
                   alt="Custom Filter Icon"
                   style={{
                     width: 16,
@@ -313,16 +299,15 @@ const UserInfo: React.FC = () => {
                 <p>Blacklist User</p>
               </div>
               <div
-               style={{
-                display:"flex",
-                flexDirection:"row",
-                gap:"15px",
-                // justifyContent:"center",
-                alignItems:"center"
-              }}
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "15px",
+                  alignItems: "center",
+                }}
               >
                 <Image
-                  src={Filter}
+                  src={Activate}
                   alt="Custom Filter Icon"
                   style={{
                     width: 16,
@@ -333,14 +318,13 @@ const UserInfo: React.FC = () => {
               </div>
             </div>
           }
-          visible={popoverVisibility[index]}
+          open={popoverVisibility[index]}
           trigger="click"
-          onVisibleChange={() => handleIconClick(index)}
-          // style={{ width: "600px", height: "200px" }}
+          onOpenChange={() => handleIconClick(index)}
         >
           <Button type="link">
             <Image
-              src={Filter}
+              src={ActionButton}
               alt="Custom Icon"
               style={{ width: 16, height: 16 }}
             />
