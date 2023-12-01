@@ -32,6 +32,7 @@ export interface Socials {
 }
 
 export interface User {
+  userId: string;
   status: string;
   accountBalance: string;
   accountNumber: string;

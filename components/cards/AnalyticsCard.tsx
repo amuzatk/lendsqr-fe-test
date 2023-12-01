@@ -19,7 +19,7 @@
 
 // Updated AnalyticsCard component
 import React from "react";
-import styles from "../../styles/Analytics.module.scss";
+import styles from "../../styles/dashboard/Analytics.module.scss";
 import Image from "next/image";
 
 interface AnalyticsCardProps {

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
-import styles from "../styles/Login.module.scss";
+import styles from "../styles/pages/Login.module.scss";
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example" isDetailPage={false}>
+  // <Layout title="Home | Next.js + TypeScript Example" isDetailPage={false}>
     <div className={styles.container}>
       <div className={styles.top}>
         <h1>Hello KAZMATICS, Welcome to Lendsqr 👋</h1>
@@ -11,7 +11,7 @@ const IndexPage = () => (
         <button>Click Me</button>
       </div>
     </div>
-  </Layout>
+  // {/* </Layout> */}
 );
 
 export default IndexPage;

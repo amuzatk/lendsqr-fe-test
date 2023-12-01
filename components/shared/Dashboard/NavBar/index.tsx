@@ -17,7 +17,7 @@ import {
   AiOutlineClose,
   AiOutlineSearch,
 } from "react-icons/ai";
-import styles from "../../../../styles/Navbar.module.scss";
+import styles from "../../../../styles/dashboard/Navbar.module.scss";
 import Logo from "../../../../public/assets/logo/logo.webp";
 import Bell from "../../../../public/assets/icons/bell.webp";
 import Dropdown from "../../../../public/assets/icons/Dropdown.webp";

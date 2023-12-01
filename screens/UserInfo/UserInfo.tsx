@@ -501,6 +501,7 @@ import Activate from "../../public/assets/icons/Activate.png";
 import ActionButton from "../../public/assets/icons/ActionButton.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { User } from "../../interfaces";
@@ -514,7 +515,9 @@ const UserInfo: React.FC = () => {
   const [filteredData, setFilteredData] = useState<Array<User>>([]);
 
   const dispatch = useDispatch();
+  const router = useRouter();
   const { data, isLoading, isError } = useQuery<User[], Error>('users', fetchUsers);
+  // console.log(data, 'data ==========')
 
   useEffect(() => {
     if (data) {
@@ -816,28 +819,7 @@ const UserInfo: React.FC = () => {
                   cursor: "pointer",
                 }}
               >
-                <Image
-                  src={ViewDetail}
-                  alt="Custom Filter Icon"
-                  style={{
-                    width: 16,
-                    height: 16,
-                  }}
-                />
-                <p
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: "500",
-                    lineHeight: "16px",
-                    letterSpacing: "0em",
-                    textAlign: "left",
-                    cursor: "pointer",
-                  }}
-                >
-                  View Details
-                </p>
-                {/* <Link href={`/${item.key}`}>
-                  <a>
+                 <Link href={`/dashboard/${record.id}`}>
                     <Image
                       src={ViewDetail}
                       alt="Custom Filter Icon"
@@ -857,8 +839,7 @@ const UserInfo: React.FC = () => {
                     >
                       View Details
                     </p>
-                  </a>
-                </Link> */}
+                </Link>
               </div>
 
               <div

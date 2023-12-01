@@ -3,8 +3,10 @@ import Link from "next/link";
 import Head from "next/head";
 import NavBar from "./shared/Dashboard/NavBar";
 import SideBar from "./shared/Dashboard/SideBar";
-import styles from "../styles/Layout.module.scss";
+import styles from "../styles/layouts/Layout.module.scss";
 import AnalyticsCard from "./cards/AnalyticsCard";
+import PageHeader from "../screens/UserDetailPage/PageHeader";
+
 
 type AnalyticsData = {
   image: string;
@@ -19,7 +21,11 @@ type Props = {
 };
 
 // const Layout = ({ children, title = "This is the default title" }: Props) => {
-  const Layout = ({ children, title = "This is the default title", isDetailPage = false }: Props) => {
+const Layout = ({
+  children,
+  title = "This is the default title",
+  isDetailPage = false,
+}: Props) => {
   // const [mainDash] = useState(true);
   const [mainDash, setMainDash] = useState(!isDetailPage);
   // const [detialPage] = useState(false);
@@ -30,10 +36,26 @@ type Props = {
   }, [isDetailPage]);
 
   const analyticsData: AnalyticsData[] = [
-    { image: "/assets/icons/AnalyticIcon1.webp", title: "USERS", amount: "2,453" },
-    { image: "/assets/icons/AnalyticIcon2.webp", title: "ACTIVE USERS", amount: "5,678" },
-    { image: "/assets/icons/AnalyticIcon3.webp", title: "USERS WITH LOANS", amount: "2,453" },
-    { image: "/assets/icons/AnalyticIcon4.webp", title: "USERS WITH SAVINGS", amount: "5,678" },
+    {
+      image: "/assets/icons/AnalyticIcon1.webp",
+      title: "USERS",
+      amount: "2,453",
+    },
+    {
+      image: "/assets/icons/AnalyticIcon2.webp",
+      title: "ACTIVE USERS",
+      amount: "5,678",
+    },
+    {
+      image: "/assets/icons/AnalyticIcon3.webp",
+      title: "USERS WITH LOANS",
+      amount: "2,453",
+    },
+    {
+      image: "/assets/icons/AnalyticIcon4.webp",
+      title: "USERS WITH SAVINGS",
+      amount: "5,678",
+    },
     // image: '/assets/images/StorefrontSectionThree.webp',
   ];
 
@@ -48,13 +70,20 @@ type Props = {
             <SideBar />
           </div>
           <div className={styles.content}>
-            {(mainDash) ?
-            <><h1>Users</h1><div className={styles.header}>
-                {analyticsData.map((data, index) => (
-                  <AnalyticsCard key={index} data={data} />
-                ))}
-              </div></>
-           : <p>DETAIL</p>  }
+            {mainDash ? (
+              <>
+                <h1>Users</h1>
+                <div className={styles.header}>
+                  {analyticsData.map((data, index) => (
+                    <AnalyticsCard key={index} data={data} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              // <div>
+                <PageHeader />
+              // {/* </div> */}
+            )}
             <div className={styles.body}>{children}</div>
           </div>
           {/* <footer>
