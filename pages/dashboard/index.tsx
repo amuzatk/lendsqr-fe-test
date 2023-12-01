@@ -4,7 +4,7 @@ import UserInfo from '../../screens/UserInfo/UserInfo';
 
 const UsersDashboard = () => {
   return (
-    <Layout>
+    <Layout isDetailPage={false}>
       <UserInfo />
     </Layout>
   )

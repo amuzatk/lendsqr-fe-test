@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import NavBar from "./shared/Dashboard/NavBar";
@@ -15,9 +15,20 @@ type AnalyticsData = {
 type Props = {
   children?: ReactNode;
   title?: string;
+  isDetailPage: boolean;
 };
 
-const Layout = ({ children, title = "This is the default title" }: Props) => {
+// const Layout = ({ children, title = "This is the default title" }: Props) => {
+  const Layout = ({ children, title = "This is the default title", isDetailPage = false }: Props) => {
+  // const [mainDash] = useState(true);
+  const [mainDash, setMainDash] = useState(!isDetailPage);
+  // const [detialPage] = useState(false);
+
+  useEffect(() => {
+    // Update mainDash state when isDetailPage prop changes
+    setMainDash(!isDetailPage);
+  }, [isDetailPage]);
+
   const analyticsData: AnalyticsData[] = [
     { image: "/assets/icons/AnalyticIcon1.webp", title: "USERS", amount: "2,453" },
     { image: "/assets/icons/AnalyticIcon2.webp", title: "ACTIVE USERS", amount: "5,678" },
@@ -37,25 +48,13 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
             <SideBar />
           </div>
           <div className={styles.content}>
-            <h1>Users</h1>
-            {/* <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head> */}
-            {/* <header>
-          <nav>
-            <Link href="/">Home</Link> | <Link href="/about">About</Link> |{" "}
-            <Link href="/users">Users List</Link> |{" "}
-            <a href="/api/users">Users API</a>
-          </nav>
-        </header> */}
-            <div className={styles.header}>
-              {/* <AnalyticsCard /> */}
-              {analyticsData.map((data, index) => (
-                <AnalyticsCard key={index} data={data} />
-              ))}
-            </div>
+            {(mainDash) ?
+            <><h1>Users</h1><div className={styles.header}>
+                {analyticsData.map((data, index) => (
+                  <AnalyticsCard key={index} data={data} />
+                ))}
+              </div></>
+           : <p>DETAIL</p>  }
             <div className={styles.body}>{children}</div>
           </div>
           {/* <footer>
