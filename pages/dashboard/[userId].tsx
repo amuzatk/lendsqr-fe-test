@@ -3,7 +3,15 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import axios from '../../lib/axiosConfig';
+import UserDetailMainPage from '../../screens/UserDetailPage/UserMainPage';
+import { User } from '../../interfaces';
 
+// interface single {
+//   name: string,
+//   phoneNumber: string,
+//   email: string,
+//   userName: string
+// }
 const UserDetailsPage: React.FC = () => {
   const router = useRouter();
   const { userId } = router.query;
@@ -26,7 +34,7 @@ const UserDetailsPage: React.FC = () => {
 
           // Update the state with the fetched user details
           setUserDetails(response.data);
-          console.log(response.data,'DATA @@@ Detail page')
+          // console.log(response.data,'DATA @@@ Detail page')
 
           // Dispatch an action to indicate the success of fetching
         } catch (error) {
@@ -45,14 +53,14 @@ const UserDetailsPage: React.FC = () => {
 
   return (
     <Layout isDetailPage={true}>
-      <h2>User Details Page</h2>
+      {/* <h2>User Details Page</h2> */}
       {loading && <p>Loading user details...</p>}
       {error && <p>Error: {error}</p>}
       {userDetails && (
         <>
-          <p>User ID: {userId}</p>
-          {/* Render other user details using userDetails */}
-          {/* Example: userDetails.name, userDetails.email, etc. */}
+          {/* <p>User ID: {userId}</p> */}
+      <UserDetailMainPage userDetails={userDetails} />
+
         </>
       )}
     </Layout>

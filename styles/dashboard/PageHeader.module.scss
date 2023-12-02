@@ -2,7 +2,8 @@
 @import '../components/ButtonStyles.scss';
 
 .container{
-    border: 1px solid red;
+    // border: 1px solid red;
+    margin-bottom: 32px;
 
 
 
@@ -19,6 +20,7 @@
         justify-content: flex-start;
         align-items: center;
         gap: 10px;
+        cursor: pointer;
 
         p{
             // color: red;

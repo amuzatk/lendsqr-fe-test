@@ -10,9 +10,9 @@ const PageHeader = () => {
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.left}>
-          <div className={styles.back}>
+          <div className={styles.back}  onClick={router.back}>
             <Image src={BackIcon} width={26.72} height={19.38} alt="BackIcon" />
-            <p onClick={router.back}>Back to Users </p>
+            <p>Back to Users </p>
           </div>
           <h1> User Details</h1>
         </div>

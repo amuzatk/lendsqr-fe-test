@@ -527,6 +527,9 @@ const UserInfo: React.FC = () => {
     }
   }, [data]);
 
+  // const realData = filteredData
+  // console.log(realData,'realData == Main Dashboard')
+
   if (isLoading) return <Spin size="large" />;
   if (isError) return <Alert message="Error fetching data" type="error" />;
 

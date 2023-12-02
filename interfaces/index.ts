@@ -48,4 +48,5 @@ export interface User {
   date: string;
   profile: Profile;
   socials: Socials;
+  user: [];
 }
