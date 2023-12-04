@@ -270,3 +270,20 @@ align-items: center;
     // // align-items: center;
     // }
 }
+
+@media only screen and (max-width: 500px){
+.search{
+    display: none;
+    border: 1px solid red;
+    max-width: 10%;
+
+    .input{
+    max-width: 10%;
+
+    }
+    .icon{
+        display: none;
+    }
+}
+
+}

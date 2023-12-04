@@ -517,7 +517,7 @@ const UserInfo: React.FC = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { data, isLoading, isError } = useQuery<User[], Error>('users', fetchUsers);
-  // console.log(data, 'data ==========')
+  console.log(data, 'data ==========')
 
   useEffect(() => {
     if (data) {
@@ -542,6 +542,14 @@ const UserInfo: React.FC = () => {
     const updatedVisibility = [...popoverVisibility];
     updatedVisibility[index] = !updatedVisibility[index];
     setPopoverVisibility(updatedVisibility);
+  };
+
+  const handleIconNavigate = (index: number) => {
+    // Assuming you have the userId in your user data
+    const userId = filteredData[index].id;
+
+    // Use the router object to navigate to the user detail page
+    router.push(`/dashboard/${userId}`);
   };
 
   const columns: ColumnsType<User> = [
@@ -761,13 +769,121 @@ const UserInfo: React.FC = () => {
         },
       ],
       filterSearch: true,
-      onFilter: (value: string, record) => record.date.startsWith(value),
+      onFilter: (value: string, record) => record.createdAt.startsWith(value),
       width: "30%",
     },
+    // {
+    //   title: "STATUS",
+    //   dataIndex: "status",
+    //   // dataIndex: "accountNumber",
+    //   filterIcon: (filtered: boolean) => (
+    //     <Image
+    //       src={Filter}
+    //       alt="Custom Filter Icon"
+    //       style={{
+    //         width: 16,
+    //         height: 16,
+    //         filter: filtered ? "invert(20%)" : undefined,
+    //       }}
+    //     />
+    //   ),
+    //   filters: [
+    //     {
+    //       text: "Lenqsqr4",
+    //       value: "Lenqsqr4",
+    //     },
+    //     {
+    //       text: "Lenqsqr",
+    //       value: "Lenqsqr",
+    //     },
+    //     {
+    //       text: "Lenqsqr2",
+    //       value: "Lenqsqr2",
+    //     },
+    //   ],
+    //   filterSearch: true,
+    //   onFilter: (value: string, record) => record.status.startsWith(value),
+    //   // onFilter: (value: string, record) => record.status.array.map((val) => val.length),
+    //   width: "30%",
+    // },
+    // {
+    //   title: "STATUS",
+    //   dataIndex: "status",
+    //   filterIcon: (filtered: boolean) => (
+    //     <Image
+    //       src={Filter}
+    //       alt="Custom Filter Icon"
+    //       style={{
+    //         width: 16,
+    //         height: 16,
+    //         filter: filtered ? "invert(20%)" : undefined,
+    //       }}
+    //     />
+    //   ),
+    //   filters: [
+    //     {
+    //       text: "Inactive",
+    //       value: "Inactive",
+    //     },
+    //     {
+    //       text: "Pending",
+    //       value: "Pending",
+    //     },
+    //     {
+    //       text: "Active",
+    //       value: "Active",
+    //     },
+    //     {
+    //       text: "Blacklisted",
+    //       value: "Blacklisted",
+    //     },
+    //   ],
+    //   filterSearch: true,
+    //   onFilter: (value: string, record) =>
+    //     record.status.array.includes(value),
+    //   width: "30%",
+    // },
+    
+    // {
+    //   title: "STATUS",
+    //   dataIndex: "status",
+    //   filterIcon: (filtered: boolean) => (
+    //     <Image
+    //       src={Filter}
+    //       alt="Custom Filter Icon"
+    //       style={{
+    //         width: 16,
+    //         height: 16,
+    //         filter: filtered ? "invert(20%)" : undefined,
+    //       }}
+    //     />
+    //   ),
+    //   filters: [
+    //     {
+    //       text: "Inactive",
+    //       value: "Inactive",
+    //     },
+    //     {
+    //       text: "Pending",
+    //       value: "Pending",
+    //     },
+    //     {
+    //       text: "Active",
+    //       value: "Active",
+    //     },
+    //     {
+    //       text: "Blacklisted",
+    //       value: "Blacklisted",
+    //     },
+    //   ],
+    //   filterSearch: true,
+    //   onFilter: (value: string, record) => record.status.array.includes(value),
+    //   width: "30%",
+    // },
+
     {
       title: "STATUS",
-      // dataIndex: "status",
-      dataIndex: "accountNumber",
+      dataIndex: "status",
       filterIcon: (filtered: boolean) => (
         <Image
           src={Filter}
@@ -781,22 +897,29 @@ const UserInfo: React.FC = () => {
       ),
       filters: [
         {
-          text: "Lenqsqr4",
-          value: "Lenqsqr4",
+          text: "Inactive",
+          value: "Inactive",
         },
         {
-          text: "Lenqsqr",
-          value: "Lenqsqr",
+          text: "Pending",
+          value: "Pending",
         },
         {
-          text: "Lenqsqr2",
-          value: "Lenqsqr2",
+          text: "Active",
+          value: "Active",
+        },
+        {
+          text: "Blacklisted",
+          value: "Blacklisted",
         },
       ],
       filterSearch: true,
-      onFilter: (value: string, record) => record.status.startsWith(value),
+      onFilter: (value: string, record) =>
+        record.status.array.includes(value),
+      render: (status: { 0: string; array: string[] }) => status.array[0],
       width: "30%",
     },
+    
 
     {
       dataIndex: "actions",
@@ -813,7 +936,38 @@ const UserInfo: React.FC = () => {
               }}
               // className="" for media and positioning min-width 1000px
             >
-              <div
+              {/* <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "15px",
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
+              >
+                 <Link href={`/dashboard/${record.id}`}>
+                    <Image
+                      src={ViewDetail}
+                      alt="Custom Filter Icon"
+                      style={{
+                        width: 16,
+                        height: 16,
+                      }}
+                    />
+                    <p
+                      style={{
+                        fontSize: "14px",
+                        fontWeight: "500",
+                        lineHeight: "16px",
+                        letterSpacing: "0em",
+                        textAlign: "left",
+                      }}
+                    >
+                      View Details
+                    </p>
+                </Link>
+              </div> */}
+                <div
                 style={{
                   display: "flex",
                   flexDirection: "row",
@@ -919,6 +1073,38 @@ const UserInfo: React.FC = () => {
         </Popover>
       ),
     },
+    // {
+    //   title: "ID",
+    //   dataIndex: "id",
+    //   filterIcon: (filtered: boolean) => (
+    //     <Image
+    //       src={Filter}
+    //       alt="Custom Filter Icon"
+    //       style={{
+    //         width: 16,
+    //         height: 16,
+    //         filter: filtered ? "invert(20%)" : undefined,
+    //       }}
+    //     />
+    //   ),
+    //   filters: [
+    //     {
+    //       text: "Lenqsqr4",
+    //       value: "Lenqsqr4",
+    //     },
+    //     {
+    //       text: "Lenqsqr",
+    //       value: "Lenqsqr",
+    //     },
+    //     {
+    //       text: "Lenqsqr2",
+    //       value: "Lenqsqr2",
+    //     },
+    //   ],
+    //   filterSearch: true,
+    //   onFilter: (value: string, record) => record.id.startsWith(value),
+    //   width: "30%",
+    // },
 
   ];
 
@@ -932,7 +1118,13 @@ const UserInfo: React.FC = () => {
   };
 
   return (
-    <div style={{ marginTop: "40px" }}>
+    <div 
+    style={{ 
+      marginTop: "40px",
+      overflowX:"scroll", 
+      // width:"80%",
+      border:"1px solid red"
+       }}>
       <Table 
         columns={columns} 
         dataSource={filteredData} 

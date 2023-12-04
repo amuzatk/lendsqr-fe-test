@@ -10,6 +10,45 @@
     // color: white;
     // z-index: 10px;
 
+    .brief{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        margin-top: 10px;
+    }
+
+
+
+.menu {
+    margin-top: 50px;
+  
+    .item {
+      margin-top: 30px;
+  
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+  
+    //   i {
+    //     font-size: 1.2rem;
+    //     margin: 0 15px;
+    //   }
+  
+      &.active {
+        background-color: red;
+        padding: 10px;
+  
+        a, i {
+          color: rgb(51, 1, 1);
+        }
+      }
+    }
+}
+
 }
 @media only screen and (max-width: 768px){
     .main{

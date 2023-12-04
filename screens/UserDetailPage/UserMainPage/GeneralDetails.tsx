@@ -5,7 +5,8 @@ import Socials from './sections/Socials'
 import Guarantor from './sections/Guarantor'
 import OtherVitals from './sections/OtherVitals'
 
-const GeneralDetails = () => {
+const GeneralDetails = ({userDetails}) => {
+  console.log(userDetails,'userDetails <<<====>> userDetails')
   return (
     <div>
       < PersonalInfo />

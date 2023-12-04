@@ -35,6 +35,7 @@ const NavBar = () => {
       <div className={styles.search}>
         <div className={styles.input}>
           <input type="text" placeholder="Search for anything" />
+          {/* <input type="text"  className={styles.mobile} /> */}
         </div>
 
         <div className={styles.icon}>

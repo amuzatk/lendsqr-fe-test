@@ -13,9 +13,11 @@ import image from "../../../public/assets/images/LoginUser.webp";
 
 
 const UserDetailMainPage = (userDetails) => {
-  // console.log(user., "USER TEST");
-  // const userPicture = user. ;
+  console.log(userDetails, "userDetails @ ==== props");
+  const userPicture = userDetails?.profile?.avatar;
+  console.log(userPicture,'userPIX')
   const [activeKey, setActiveKey] = useState("1");
+
 
   const items = [
     {
@@ -23,7 +25,7 @@ const UserDetailMainPage = (userDetails) => {
       key: "1",
       children: (
         <div>
-          <GeneralDetails />
+          <GeneralDetails userDetails={userDetails} />
         </div>
       ),
     },
@@ -93,6 +95,8 @@ const UserDetailMainPage = (userDetails) => {
           <div className={styles.inner}>
             <h2>Grace Effiom</h2>
             <span>LSQFf587g90</span>
+            {/* <span>{userDetails.accountBalance}</span> */}
+
           </div>
         </div>
         <div className={styles.second}>
