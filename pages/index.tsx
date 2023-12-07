@@ -71,7 +71,7 @@ const LoginPage = () => {
 
   const handleLogin = () => {
     // For simplicity, always redirect to /dashboard on login button click
-    router.push('/dashboard');
+    router.push('/users');
   };
 
   return (

@@ -24,31 +24,87 @@ color: #213F7D;
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
+    flex-wrap: wrap;
+
+        // padding-right: 60px;
+
+        .first, .second, .third, .forth, .fifth{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 28px 0;
+
+            .cont{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+            gap: 8px;
 
 
-        .first h6, .second h6, .third h6, .forth h6, .fifth h6{
-            font-family: Work Sans;
-font-size: 12px;
-font-weight: 400;
-line-height: 14px;
-letter-spacing: 0px;
-text-align: left;
-color: #545F7D;
-text-transform: uppercase;
+            .full, .second h6, .third h6, .forth h6, .fifth h6{
+                font-family: Work Sans;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #545F7D;
+    text-transform: uppercase;
+    
+            }
+
+
+            .name, .second p, .third p, .forth p, .fifth p{
+                font-family: Work Sans;
+    font-size: 16px;
+    font-weight: 500;
+    // font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #545F7D;
+    // text-transform: capitalize;
+    
+            }
+
+            }
 
         }
 
-        .first p, .second p, .third p, .forth p, .fifth p{
-            font-family: Work Sans;
-font-size: 16px;
-// font-weight: 500;
-font-weight: 600;
-line-height: 19px;
-letter-spacing: 0px;
-text-align: left;
-color: #545F7D;
-// text-transform: capitalize;
 
-        }
+//         .first .full, .second h6, .third h6, .forth h6, .fifth h6{
+//             font-family: Work Sans;
+// font-size: 12px;
+// font-weight: 400;
+// line-height: 14px;
+// letter-spacing: 0px;
+// text-align: left;
+// color: #545F7D;
+// text-transform: uppercase;
+
+//         }
+
+//         .first .name, .second p, .third p, .forth p, .fifth p{
+//             font-family: Work Sans;
+// font-size: 16px;
+// // font-weight: 500;
+// font-weight: 600;
+// line-height: 19px;
+// letter-spacing: 0px;
+// text-align: left;
+// color: #545F7D;
+// // text-transform: capitalize;
+
+//         }
+    }
+}
+
+@media only screen and (min-width: 1366px){
+    .main{
+        // border: 1px solid red;
+        padding-right: 60px;
     }
 }

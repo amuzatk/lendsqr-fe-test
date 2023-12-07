@@ -10,10 +10,10 @@ const GeneralDetails = ({userDetails}) => {
   return (
     <div>
       < PersonalInfo />
-      <EducationNEmployment />
+      {/* <EducationNEmployment />
       <Socials />
       <Guarantor />
-      <OtherVitals />
+      <OtherVitals /> */}
     </div>
   )
 }

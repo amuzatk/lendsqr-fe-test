@@ -10,6 +10,9 @@ import AppNSystem from "./App&System";
 import styles from "../../../styles/dashboard/UserDetailMainPage.module.scss";
 import image from "../../../public/assets/images/LoginUser.webp";
 // import { User } from "../../../interfaces";
+// import { currencyFormatter } from 'helpers';
+import { currencyFormatter } from "../../../helpers";
+
 
 
 const UserDetailMainPage = (userDetails) => {
@@ -93,19 +96,20 @@ const UserDetailMainPage = (userDetails) => {
             alt="avatar"
           />
           <div className={styles.inner}>
-            <h2>Grace Effiom</h2>
-            <span>LSQFf587g90</span>
-            {/* <span>{userDetails.accountBalance}</span> */}
-
+          <span className={styles.name}>Grace Effiom</span>
+            <span className={styles.others}>LSQFf587g90</span>
           </div>
         </div>
         <div className={styles.second}>
-          <p>User's Tier</p>
-          <Rate count={3} defaultValue={1} />
+        <span className={styles.user}>User's Tier</span>
+            <span className={styles.rating}><Rate count={3} defaultValue={1} /></span>
         </div>
         <div className={styles.third}>
-          <h2>#2,000,000</h2>
-          <p>9912345678/Providus Bank</p>
+
+        <span className={styles.amount}>
+          {currencyFormatter('en-NG', 'NGN', 200000)}
+          </span>
+            <span className={styles.bank}>9912345678/Providus Bank</span>
         </div>
       </div>
       {/* <TabStyle> */}

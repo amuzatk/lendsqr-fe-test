@@ -44,17 +44,18 @@ const Layout = ({
     {
       image: "/assets/icons/AnalyticIcon2.webp",
       title: "ACTIVE USERS",
-      amount: "5,678",
+      amount: "2,453",
     },
     {
       image: "/assets/icons/AnalyticIcon3.webp",
       title: "USERS WITH LOANS",
-      amount: "2,453",
+      amount: "12,453",
+
     },
     {
       image: "/assets/icons/AnalyticIcon4.webp",
       title: "USERS WITH SAVINGS",
-      amount: "5,678",
+      amount: "102,453",
     },
     // image: '/assets/images/StorefrontSectionThree.webp',
   ];

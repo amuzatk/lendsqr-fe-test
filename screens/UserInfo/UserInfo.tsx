@@ -549,7 +549,7 @@ const UserInfo: React.FC = () => {
     const userId = filteredData[index].id;
 
     // Use the router object to navigate to the user detail page
-    router.push(`/dashboard/${userId}`);
+    router.push(`/users/${userId}`);
   };
 
   const columns: ColumnsType<User> = [
@@ -645,7 +645,7 @@ const UserInfo: React.FC = () => {
       width: "30%",
     },
     {
-      title: "SURNAME",
+      title: "USERNAME",
       dataIndex: "userName",
       filterIcon: (filtered: boolean) => (
         <Image
@@ -772,114 +772,6 @@ const UserInfo: React.FC = () => {
       onFilter: (value: string, record) => record.createdAt.startsWith(value),
       width: "30%",
     },
-    // {
-    //   title: "STATUS",
-    //   dataIndex: "status",
-    //   // dataIndex: "accountNumber",
-    //   filterIcon: (filtered: boolean) => (
-    //     <Image
-    //       src={Filter}
-    //       alt="Custom Filter Icon"
-    //       style={{
-    //         width: 16,
-    //         height: 16,
-    //         filter: filtered ? "invert(20%)" : undefined,
-    //       }}
-    //     />
-    //   ),
-    //   filters: [
-    //     {
-    //       text: "Lenqsqr4",
-    //       value: "Lenqsqr4",
-    //     },
-    //     {
-    //       text: "Lenqsqr",
-    //       value: "Lenqsqr",
-    //     },
-    //     {
-    //       text: "Lenqsqr2",
-    //       value: "Lenqsqr2",
-    //     },
-    //   ],
-    //   filterSearch: true,
-    //   onFilter: (value: string, record) => record.status.startsWith(value),
-    //   // onFilter: (value: string, record) => record.status.array.map((val) => val.length),
-    //   width: "30%",
-    // },
-    // {
-    //   title: "STATUS",
-    //   dataIndex: "status",
-    //   filterIcon: (filtered: boolean) => (
-    //     <Image
-    //       src={Filter}
-    //       alt="Custom Filter Icon"
-    //       style={{
-    //         width: 16,
-    //         height: 16,
-    //         filter: filtered ? "invert(20%)" : undefined,
-    //       }}
-    //     />
-    //   ),
-    //   filters: [
-    //     {
-    //       text: "Inactive",
-    //       value: "Inactive",
-    //     },
-    //     {
-    //       text: "Pending",
-    //       value: "Pending",
-    //     },
-    //     {
-    //       text: "Active",
-    //       value: "Active",
-    //     },
-    //     {
-    //       text: "Blacklisted",
-    //       value: "Blacklisted",
-    //     },
-    //   ],
-    //   filterSearch: true,
-    //   onFilter: (value: string, record) =>
-    //     record.status.array.includes(value),
-    //   width: "30%",
-    // },
-    
-    // {
-    //   title: "STATUS",
-    //   dataIndex: "status",
-    //   filterIcon: (filtered: boolean) => (
-    //     <Image
-    //       src={Filter}
-    //       alt="Custom Filter Icon"
-    //       style={{
-    //         width: 16,
-    //         height: 16,
-    //         filter: filtered ? "invert(20%)" : undefined,
-    //       }}
-    //     />
-    //   ),
-    //   filters: [
-    //     {
-    //       text: "Inactive",
-    //       value: "Inactive",
-    //     },
-    //     {
-    //       text: "Pending",
-    //       value: "Pending",
-    //     },
-    //     {
-    //       text: "Active",
-    //       value: "Active",
-    //     },
-    //     {
-    //       text: "Blacklisted",
-    //       value: "Blacklisted",
-    //     },
-    //   ],
-    //   filterSearch: true,
-    //   onFilter: (value: string, record) => record.status.array.includes(value),
-    //   width: "30%",
-    // },
 
     {
       title: "STATUS",
@@ -917,7 +809,7 @@ const UserInfo: React.FC = () => {
       onFilter: (value: string, record) =>
         record.status.array.includes(value),
       render: (status: { 0: string; array: string[] }) => status.array[0],
-      width: "30%",
+      // width: "30%",
     },
     
 
@@ -976,7 +868,7 @@ const UserInfo: React.FC = () => {
                   cursor: "pointer",
                 }}
               >
-                 <Link href={`/dashboard/${record.id}`}>
+                 <Link href={`/users/${record.id}`}>
                     <Image
                       src={ViewDetail}
                       alt="Custom Filter Icon"

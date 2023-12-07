@@ -62,7 +62,12 @@ color: #213F7D;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    flex-wrap: wrap;
     column-gap: 16px;
+
+    button{
+        text-transform: uppercase;
+    }
 
     .blacklist{
 @include buttonStyle(
