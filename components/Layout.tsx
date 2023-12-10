@@ -62,6 +62,7 @@ const Layout = ({
 
   return (
     <div>
+      {/* <h3>TEST</h3> */}
       <NavBar />
       <div className={styles.main}>
         <div className={styles.layout}>
