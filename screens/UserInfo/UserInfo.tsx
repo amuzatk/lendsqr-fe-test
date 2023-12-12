@@ -1015,7 +1015,7 @@ const UserInfo: React.FC = () => {
       marginTop: "40px",
       overflowX:"scroll", 
       // width:"80%",
-      border:"1px solid red"
+      // border:"1px solid red"
        }}>
       <Table 
         columns={columns} 
