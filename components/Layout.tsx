@@ -66,7 +66,7 @@ const Layout = ({
       <NavBar />
       <div className={styles.main}>
         <div className={styles.layout}>
-          <div>
+          <div className={styles.sidebar}>
             {/* <div className={styles.sidebar}> */}
             {/* <div className={styles.menu}> Sidebar menus</div> */}
             <SideBar />
@@ -82,9 +82,7 @@ const Layout = ({
                 </div>
               </>
             ) : (
-              // <div>
                 <PageHeader />
-              // {/* </div> */}
             )}
             <div className={styles.body}>{children}</div>
           </div>

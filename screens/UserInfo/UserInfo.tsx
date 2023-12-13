@@ -499,6 +499,7 @@ import ViewDetail from "../../public/assets/icons/ViewDetail.png";
 import Blacklist from "../../public/assets/icons/Blacklist.png";
 import Activate from "../../public/assets/icons/Activate.png";
 import ActionButton from "../../public/assets/icons/ActionButton.png";
+import styles from '../../styles/dashboard/UserInfo.module.scss';
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router';
@@ -530,7 +531,13 @@ const UserInfo: React.FC = () => {
   // const realData = filteredData
   // console.log(realData,'realData == Main Dashboard')
 
-  if (isLoading) return <Spin size="large" />;
+  if (isLoading) return <span style={{
+    // border:"2px solid green",
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center"
+
+  }}> <Spin size="large" /></span>;
   if (isError) return <Alert message="Error fetching data" type="error" />;
 
   const initializePopoverVisibility = (data: User[]) => {
@@ -552,17 +559,25 @@ const UserInfo: React.FC = () => {
     router.push(`/users/${userId}`);
   };
 
+  const rowClassName = (record: User, index: number) => {
+    return index % 2 === 0 ? styles.evenRow : styles.oddRow;
+  };
+
+  
+
   const columns: ColumnsType<User> = [
     {
-      title: "ORGANIZATION",
+      title: <span className={styles.columnTitle}>ORGANIZATION</span>,
       dataIndex: "orgName",
       filterIcon: (filtered: boolean) => (
         <Image
           src={Filter}
           alt="Custom Filter Icon"
           style={{
-            width: 16,
-            height: 16,
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
             filter: filtered ? "invert(20%)" : undefined,
           }}
         />
@@ -642,18 +657,24 @@ const UserInfo: React.FC = () => {
           </Form>
         </div>
       ),
-      width: "30%",
+      // width: "30%",
+      width: "116px"
     },
     {
-      title: "USERNAME",
+      // title: "USERNAME",
+      title: <span className={styles.columnTitle}>USERNAME</span>,
       dataIndex: "userName",
       filterIcon: (filtered: boolean) => (
         <Image
           src={Filter}
           alt="Custom Filter Icon"
           style={{
-            width: 16,
-            height: 16,
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
+            position:"absolute",
+            left:"-40px",
             filter: filtered ? "invert(20%)" : undefined,
           }}
         />
@@ -674,18 +695,25 @@ const UserInfo: React.FC = () => {
       ],
       filterSearch: true,
       onFilter: (value: string, record) => record.userName.startsWith(value),
-      width: "30%",
+      // width: "30%",
+      width:"94px",
+      // height:"16px",
     },
     {
-      title: "EMAIL",
+      // title: "EMAIL",
+      title: <span className={styles.columnTitle}>EMAIL</span>,
       dataIndex: "email",
       filterIcon: (filtered: boolean) => (
         <Image
           src={Filter}
           alt="Custom Filter Icon"
           style={{
-            width: 16,
-            height: 16,
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
+            position:"absolute",
+            left:"-170px",
             filter: filtered ? "invert(20%)" : undefined,
           }}
         />
@@ -706,18 +734,22 @@ const UserInfo: React.FC = () => {
       ],
       filterSearch: true,
       onFilter: (value: string, record) => record.email.startsWith(value),
-      width: "30%",
+      // width: "30%",
+      width:"64px"
     },
     {
-      title: "PHONE NUMBER",
+      // title: "PHONE NUMBER",
+      title: <span className={styles.email}>PHONE NUMBER</span>,
       dataIndex: "phoneNumber",
       filterIcon: (filtered: boolean) => (
         <Image
           src={Filter}
           alt="Custom Filter Icon"
           style={{
-            width: 16,
-            height: 16,
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
             filter: filtered ? "invert(20%)" : undefined,
           }}
         />
@@ -738,18 +770,21 @@ const UserInfo: React.FC = () => {
       ],
       filterSearch: true,
       onFilter: (value: string, record) => record.phoneNumber.startsWith(value),
-      width: "30%",
+      width: "124px",
     },
     {
-      title: "DATE JOINED",
+      // title: "DATE JOINED",
+      title: <span className={styles.columnTitle}>DATE JOINED</span>,
       dataIndex: "createdAt",
       filterIcon: (filtered: boolean) => (
         <Image
           src={Filter}
           alt="Custom Filter Icon"
           style={{
-            width: 16,
-            height: 16,
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
             filter: filtered ? "invert(20%)" : undefined,
           }}
         />
@@ -770,19 +805,23 @@ const UserInfo: React.FC = () => {
       ],
       filterSearch: true,
       onFilter: (value: string, record) => record.createdAt.startsWith(value),
-      width: "30%",
+      // width: "30%",
+      width:"105px"
     },
 
     {
-      title: "STATUS",
+      // title: "STATUS",
+      title: <span className={styles.columnTitle}>STATUS</span>,
       dataIndex: "status",
       filterIcon: (filtered: boolean) => (
         <Image
           src={Filter}
           alt="Custom Filter Icon"
           style={{
-            width: 16,
-            height: 16,
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
             filter: filtered ? "invert(20%)" : undefined,
           }}
         />
@@ -808,8 +847,27 @@ const UserInfo: React.FC = () => {
       filterSearch: true,
       onFilter: (value: string, record) =>
         record.status.array.includes(value),
-      render: (status: { 0: string; array: string[] }) => status.array[0],
-      // width: "30%",
+      // render: (status: { 0: string; array: string[] }) => status.array[0],
+      render: (status: { 0: string; array: string[] }) => {
+        const statusValue = status.array[0];
+  
+        // Define styles based on the status value
+        let statusStyle = {};
+        if (statusValue === "Inactive") {
+          statusStyle = { color: "#545F7D", borderRadius:"25px", padding:"12px", background:"#f5f5f7"  }; // Change to your desired style
+        } else if (statusValue === "Blacklisted") {
+          statusStyle = { color: "#E4033B", borderRadius:"25px", padding:"12px", background:"#fce6eb" }; 
+
+        } else if (statusValue === "Active") {
+          statusStyle = { color: "#39CD62" , borderRadius:"25px", padding:"12px", background:"#f3fcf6"}; // Change to your desired style
+        } else if (statusValue === "Pending") {
+          statusStyle = { color: "#E9B200" , borderRadius:"25px", padding:"12px", background:"#fdf7e6" }; 
+        }
+  
+        return <span style={statusStyle}>{statusValue}</span>;
+      },
+
+      width:"71px"
     },
     
 
@@ -828,37 +886,6 @@ const UserInfo: React.FC = () => {
               }}
               // className="" for media and positioning min-width 1000px
             >
-              {/* <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  gap: "15px",
-                  alignItems: "center",
-                  cursor: "pointer",
-                }}
-              >
-                 <Link href={`/dashboard/${record.id}`}>
-                    <Image
-                      src={ViewDetail}
-                      alt="Custom Filter Icon"
-                      style={{
-                        width: 16,
-                        height: 16,
-                      }}
-                    />
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        fontWeight: "500",
-                        lineHeight: "16px",
-                        letterSpacing: "0em",
-                        textAlign: "left",
-                      }}
-                    >
-                      View Details
-                    </p>
-                </Link>
-              </div> */}
                 <div
                 style={{
                   display: "flex",
@@ -965,38 +992,6 @@ const UserInfo: React.FC = () => {
         </Popover>
       ),
     },
-    // {
-    //   title: "ID",
-    //   dataIndex: "id",
-    //   filterIcon: (filtered: boolean) => (
-    //     <Image
-    //       src={Filter}
-    //       alt="Custom Filter Icon"
-    //       style={{
-    //         width: 16,
-    //         height: 16,
-    //         filter: filtered ? "invert(20%)" : undefined,
-    //       }}
-    //     />
-    //   ),
-    //   filters: [
-    //     {
-    //       text: "Lenqsqr4",
-    //       value: "Lenqsqr4",
-    //     },
-    //     {
-    //       text: "Lenqsqr",
-    //       value: "Lenqsqr",
-    //     },
-    //     {
-    //       text: "Lenqsqr2",
-    //       value: "Lenqsqr2",
-    //     },
-    //   ],
-    //   filterSearch: true,
-    //   onFilter: (value: string, record) => record.id.startsWith(value),
-    //   width: "30%",
-    // },
 
   ];
 
@@ -1010,18 +1005,13 @@ const UserInfo: React.FC = () => {
   };
 
   return (
-    <div 
-    style={{ 
-      marginTop: "40px",
-      overflowX:"scroll", 
-      // width:"80%",
-      // border:"1px solid red"
-       }}>
+    <div className={styles.container}>
       <Table 
         columns={columns} 
         dataSource={filteredData} 
         onChange={onChange}
         rowKey={(record) => record.id}
+        rowClassName={rowClassName}
       />
     </div>
   );

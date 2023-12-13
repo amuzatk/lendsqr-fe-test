@@ -5,7 +5,14 @@ import UserInfo from '../../screens/UserInfo/UserInfo';
 const UsersDashboard = () => {
   return (
     <Layout isDetailPage={false}>
+      {/* <div 
+      // style={{
+      //   width:"100%", 
+      //   border:"1px solid red"
+      //   }}
+        > */}
       <UserInfo />
+      {/* </div> */}
     </Layout>
   )
 }

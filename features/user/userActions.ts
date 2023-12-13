@@ -15,88 +15,15 @@
 
 // features/user/userActions.ts
 
-import { AnyAction } from 'redux';
-import axios from '../../lib/axiosConfig';
+// import { AnyAction } from 'redux';
+// import axios from '../../lib/axiosConfig';
 import { User } from '../../interfaces/index';
-
-// Import the faker library
 import faker from 'faker';
-
-// Function to generate mock data using faker
-// const generateMockData = (): User[] => {
-//   const mockData: User[] = [];
-
-//   for (let i = 1; i <= 500; i++) {
-//     const user: User = {
-//       accountBalance: (Math.random() * 5000).toFixed(2),
-//       accountNumber: `LJDFJCDNSJD${i}`,
-//       createdAt: new Date().toISOString(),
-//       education: {
-//         duration: `${Math.floor(Math.random() * 5) + 1} Years`,
-//         employmentStatus: "Employed",
-//         level: "Bsc",
-//         loanRepayment: (Math.random() * 200).toFixed(2),
-//         monthlyIncome: {
-//           0: (Math.random() * 200).toFixed(2),
-//           1: (Math.random() * 200).toFixed(2),
-//           length: 2,
-//         },
-//         officeEmail: `${faker.name.firstName()}@yahoo.com`,
-//         sector: "FinTech",
-//       },
-//       email: `${faker.name.firstName()}.${faker.name.lastName()}@gmail.com`,
-//       guarantor: {
-//         address: `${faker.address.streetName()} ${faker.address.city()}`,
-//         firstName: faker.name.firstName(),
-//         gender: faker.random.arrayElement(["Male", "Female"]),
-//         lastName: faker.name.lastName(),
-//         phoneNumber: faker.phone.phoneNumberFormat(),
-//       },
-//       id: i.toString(),
-//       lastActiveDate: new Date().toISOString(),
-//       orgName: faker.company.companyName().toLowerCase().replace(/\s/g, '-'),
-//       phoneNumber: faker.phone.phoneNumber(),
-//       profile: {
-//         address: faker.address.streetAddress(),
-//         avatar: `https://i.pravatar.cc/200?u=${i}`,
-//         bvn: `${Math.floor(Math.random() * 1000000000)}`,
-//         currency: "NGN",
-//         firstName: faker.name.firstName(),
-//         gender: faker.random.arrayElement(["Male", "Female"]),
-//         lastName: faker.name.lastName(),
-//         phoneNumber: faker.phone.phoneNumber(),
-//       },
-//       socials: {
-//         facebook: `@${faker.company.companyName().toLowerCase().replace(/\s/g, '-')}`,
-//         instagram: `@${faker.company.companyName().toLowerCase().replace(/\s/g, '-')}`,
-//         twitter: `@${faker.company.companyName().toLowerCase().replace(/\s/g, '-')}`,
-//       },
-//       userName: `${faker.name.firstName()}.${faker.name.lastName()}`,
-//       status: {
-//         0: "Inactive",
-//         1: "Pending",
-//         2: "Active",
-//         3: "Blacklisted",
-//   array: ["Inactive", "Pending", "Active", "Blacklisted"],
-//       },
-//       // status: ["Inactive", "Pending", "Active", "Blacklisted"],
-//     };
-
-//     mockData.push(user);
-//   }
-
-//   return mockData;
-// };
-
-// features/user/userActions.ts
-
-// ... (previous code)
 
 export const generateMockData = (): User[] => {
   const mockData: User[] = [];
 
   for (let i = 1; i <= 500; i++) {
-    // const shuffledStatusArray = faker.helpers.shuffle(["Inactive", "Pending", "Active", "Blacklisted"]);
     const statusArray = ["Inactive", "Pending", "Active", "Blacklisted"];
     const randomStatusIndex = Math.floor(Math.random() * statusArray.length);
     const randomStatus = statusArray[randomStatusIndex];
@@ -157,8 +84,6 @@ export const generateMockData = (): User[] => {
 
   return mockData;
 };
-
-// ... (remaining code)
 
 
 // Replace the fetchUsers function with the mock data
