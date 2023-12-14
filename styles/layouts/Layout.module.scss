@@ -28,8 +28,9 @@
 
 .sidebar{
     border: 2px solid blue;
-    width: 283px;
-    // width: 21%;
+    // width: 283px;
+    // display: none;
+    min-width: 15%;
     // min-width: 283px;
     // max-width: 283px;
 }

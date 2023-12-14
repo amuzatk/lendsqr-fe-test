@@ -1,11 +1,3 @@
-// features/user/types.ts
-
-// export interface User {
-//     id: string;
-//     name: string;
-//     // Add other properties based on the actual API response
-//   }
-  
   // features/user/userSlice.ts
   
   import { createSlice, PayloadAction } from '@reduxjs/toolkit';

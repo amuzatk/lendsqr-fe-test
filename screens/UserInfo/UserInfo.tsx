@@ -1012,6 +1012,7 @@ const UserInfo: React.FC = () => {
         onChange={onChange}
         rowKey={(record) => record.id}
         rowClassName={rowClassName}
+        // scroll={{ x: 'max-content' }}
       />
     </div>
   );

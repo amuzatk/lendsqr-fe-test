@@ -7,7 +7,7 @@
 
     box-shadow: 3px 5px 20px 0px #0000000A;
 
-    // border: 1px solid red;
+    border: 1px solid red;
     // max-width: 80%;
     margin-top: 40px;
 
@@ -86,3 +86,74 @@ color:#545f7d;
 }
       
 }
+
+// =============================================================
+/* UserInfo2.module.scss */
+
+.tableContainer {
+    /* Add your container styles here */
+    // border: 1px solid red;
+    overflow-x: scroll;
+
+  }
+  
+  .table {
+    /* Add your table styles here */
+  }
+  
+  .headerRow {
+    /* Add your header row styles here */
+    border: 11px solid red;
+    // font-size: 50px;
+
+
+  }
+
+  
+  .headerCell {
+    font-size: 10px;
+    color:red;
+    /* Add your header cell styles here */
+  }
+  
+  .body {
+    border: 11px solid red;
+
+    /* Add your body styles here */
+  }
+  
+  .bodyRow {
+    border: 11px solid red;
+    color:rgb(0, 255, 13);
+
+
+    /* Add your body ro
+    w styles here */
+  }
+  
+  .bodyCell {
+    border: 1px solid rgb(0, 38, 255);
+
+    /* Add your body cell styles here */
+  }
+
+  /* UserInfo2.module.scss */
+
+/* Add your existing styles */
+
+@media screen and (max-width: 600px) {
+    /* Adjust styles for smaller screens */
+    .headerCell, .bodyCell {
+      padding: 8px; /* Adjust padding for smaller screens */
+    }
+  
+    .bodyCell {
+      font-size: 12px; /* Adjust font size for smaller screens */
+    }
+  
+    /* Hide certain columns on smaller screens */
+    .hideOnSmallScreen {
+      display: none;
+    }
+  }
+  
