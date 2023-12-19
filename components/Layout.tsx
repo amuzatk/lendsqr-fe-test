@@ -8,7 +8,7 @@ import AnalyticsCard from "./cards/AnalyticsCard";
 import PageHeader from "../screens/UserDetailPage/PageHeader";
 import { useQuery } from "react-query";
 import { User } from "../interfaces";
-import { fetchUserData } from "../features/user/userActions2";
+// import { fetchUserData } from "../features/user/userActions2";
 
 
 type AnalyticsData = {
@@ -38,10 +38,10 @@ const Layout = ({
     setMainDash(!isDetailPage);
   }, [isDetailPage]);
 
-  const { data, isLoading, isError, refetch } = useQuery<User[], Error>('users', fetchUserData, {
-    enabled: false, // Disable automatic fetching
-  });
-  console.log(data, 'data DUMMY===@ CARD==')
+  // const { data, isLoading, isError, refetch } = useQuery<User[], Error>('users', fetchUserData, {
+  //   enabled: false, // Disable automatic fetching
+  // });
+  // console.log(data, 'data DUMMY===@ CARD==')
 
   // const { data, isLoading, isError, refetch } = useQuery<User[], Error>('users', fetchUsers);
   // console.log(data, 'data ACTUAL=====')
