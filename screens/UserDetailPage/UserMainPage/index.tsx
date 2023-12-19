@@ -9,16 +9,14 @@ import Savings from "./Savings";
 import AppNSystem from "./App&System";
 import styles from "../../../styles/dashboard/UserDetailMainPage.module.scss";
 import image from "../../../public/assets/images/LoginUser.webp";
-// import { User } from "../../../interfaces";
+import { User } from "../../../interfaces";
 // import { currencyFormatter } from 'helpers';
 import { currencyFormatter } from "../../../helpers";
 
 
 
-const UserDetailMainPage = (userDetails) => {
-  console.log(userDetails, "userDetails @ ==== props");
-  const userPicture = userDetails?.profile?.avatar;
-  console.log(userPicture,'userPIX')
+  const UserDetailMainPage: React.FC<{ userDetails: User }> = ({ userDetails }) => {
+  // console.log(userDetails, "userDetails @ ==== props");
   const [activeKey, setActiveKey] = useState("1");
 
 
@@ -84,19 +82,28 @@ const UserDetailMainPage = (userDetails) => {
   const handleClikedTab = (key: string) => {
     setActiveKey(key);
   };
+
+  const firstName = userDetails?.profile?.firstName;
+  const lastName = userDetails?.profile?.lastName;
+  // const avatar = userDetails?.profile?.avatar || image ;
+  const avatar = userDetails?.profile?.avatar ||  "/assets/images/LoginUser.webp" ;
+  const accountBalance = userDetails?.accountBalance;
+  const accountNumber = userDetails?.accountNumber;
+
   return (
     <>
       <div className={styles.top}>
         <div className={styles.first}>
           <Image
             style={{ borderRadius: "50%" }}
-            src={image}
+            src={avatar}           
             width={100}
             height={100}
             alt="avatar"
           />
           <div className={styles.inner}>
-          <span className={styles.name}>Grace Effiom</span>
+          <span className={styles.name}>{firstName} {lastName} </span>
+          {/* Lendsqr reg no == format => LSQFf587g9001 - LSQFf587g9500   */}
             <span className={styles.others}>LSQFf587g90</span>
           </div>
         </div>
@@ -107,9 +114,12 @@ const UserDetailMainPage = (userDetails) => {
         <div className={styles.third}>
 
         <span className={styles.amount}>
-          {currencyFormatter('en-NG', 'NGN', 200000)}
+          {/* {currencyFormatter('en-NG', 'NGN', 200000)} */}
+          {currencyFormatter('en-NG', 'NGN', Number(accountBalance))}
           </span>
-            <span className={styles.bank}>9912345678/Providus Bank</span>
+            {/* <span className={styles.bank}>9912345678/Providus Bank</span> */}
+            {/*NOTE: A/C NO NOT CHANGING bank name is missing */}
+            <span className={styles.bank}>{accountNumber}/Providus Bank</span>
         </div>
       </div>
       {/* <TabStyle> */}

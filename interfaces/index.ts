@@ -103,6 +103,7 @@ interface Status {
 
 export interface User {
   accountBalance: string;
+  // accountBalance: number;
   accountNumber: string;
   createdAt: string;
   education: Education;

@@ -4,12 +4,14 @@ import EducationNEmployment from './sections/Education&Employment'
 import Socials from './sections/Socials'
 import Guarantor from './sections/Guarantor'
 import OtherVitals from './sections/OtherVitals'
+import { User } from '../../../interfaces'
 
-const GeneralDetails = ({userDetails}) => {
-  console.log(userDetails,'userDetails <<<====>> userDetails')
+// const GeneralDetails = ({userDetails}) => {
+  const GeneralDetails: React.FC<{ userDetails: User }> = ({ userDetails }) => {
+  // console.log(userDetails,'userDetails <<<====>> userDetails')
   return (
     <div>
-      < PersonalInfo />
+      < PersonalInfo userDetails={userDetails} />
       {/* <EducationNEmployment />
       <Socials />
       <Guarantor />

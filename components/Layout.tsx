@@ -6,6 +6,9 @@ import SideBar from "./shared/Dashboard/SideBar";
 import styles from "../styles/layouts/Layout.module.scss";
 import AnalyticsCard from "./cards/AnalyticsCard";
 import PageHeader from "../screens/UserDetailPage/PageHeader";
+import { useQuery } from "react-query";
+import { User } from "../interfaces";
+import { fetchUserData } from "../features/user/userActions2";
 
 
 type AnalyticsData = {
@@ -34,6 +37,26 @@ const Layout = ({
     // Update mainDash state when isDetailPage prop changes
     setMainDash(!isDetailPage);
   }, [isDetailPage]);
+
+  const { data, isLoading, isError, refetch } = useQuery<User[], Error>('users', fetchUserData, {
+    enabled: false, // Disable automatic fetching
+  });
+  console.log(data, 'data DUMMY===@ CARD==')
+
+  // const { data, isLoading, isError, refetch } = useQuery<User[], Error>('users', fetchUsers);
+  // console.log(data, 'data ACTUAL=====')
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await refetch(); // Manually trigger the data fetching
+      } catch (error) {
+        // Handle error
+      }
+    };
+  
+    fetchData();
+  }, [refetch]);
 
   const analyticsData: AnalyticsData[] = [
     {
@@ -79,6 +102,10 @@ const Layout = ({
                   {analyticsData.map((data, index) => (
                     <AnalyticsCard key={index} data={data} />
                   ))}
+
+{/* {analyticsData.map((data, index) => (
+                    <AnalyticsCard key={index} data={data} />
+                  ))} */}
                 </div>
               </>
             ) : (
