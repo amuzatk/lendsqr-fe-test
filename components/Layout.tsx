@@ -46,17 +46,17 @@ const Layout = ({
   // const { data, isLoading, isError, refetch } = useQuery<User[], Error>('users', fetchUsers);
   // console.log(data, 'data ACTUAL=====')
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await refetch(); // Manually trigger the data fetching
-      } catch (error) {
-        // Handle error
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       await refetch(); // Manually trigger the data fetching
+  //     } catch (error) {
+  //       // Handle error
+  //     }
+  //   };
   
-    fetchData();
-  }, [refetch]);
+  //   fetchData();
+  // }, [refetch]);
 
   const analyticsData: AnalyticsData[] = [
     {
