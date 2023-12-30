@@ -317,66 +317,66 @@ const UserInfo: React.FC = () => {
       width:"105px"
     },
 
-    {
-      // title: "STATUS",
-      title: <span className={styles.columnTitle}>STATUS</span>,
-      dataIndex: "status",
-      filterIcon: (filtered: boolean) => (
-        <Image
-          src={Filter}
-          alt="Custom Filter Icon"
-          style={{
-            // width: 16,
-            // height: 16,
-            width: 13,
-            height: 10,
-            filter: filtered ? "invert(20%)" : undefined,
-          }}
-        />
-      ),
-      filters: [
-        {
-          text: "Inactive",
-          value: "Inactive",
-        },
-        {
-          text: "Pending",
-          value: "Pending",
-        },
-        {
-          text: "Active",
-          value: "Active",
-        },
-        {
-          text: "Blacklisted",
-          value: "Blacklisted",
-        },
-      ],
-      filterSearch: true,
-      onFilter: (value: string, record) =>
-        record.status.array.includes(value),
-      // render: (status: { 0: string; array: string[] }) => status.array[0],
-      render: (status: { 0: string; array: string[] }) => {
-        const statusValue = status.array[0];
+    // {
+    //   // title: "STATUS",
+    //   title: <span className={styles.columnTitle}>STATUS</span>,
+    //   dataIndex: "status",
+    //   filterIcon: (filtered: boolean) => (
+    //     <Image
+    //       src={Filter}
+    //       alt="Custom Filter Icon"
+    //       style={{
+    //         // width: 16,
+    //         // height: 16,
+    //         width: 13,
+    //         height: 10,
+    //         filter: filtered ? "invert(20%)" : undefined,
+    //       }}
+    //     />
+    //   ),
+    //   filters: [
+    //     {
+    //       text: "Inactive",
+    //       value: "Inactive",
+    //     },
+    //     {
+    //       text: "Pending",
+    //       value: "Pending",
+    //     },
+    //     {
+    //       text: "Active",
+    //       value: "Active",
+    //     },
+    //     {
+    //       text: "Blacklisted",
+    //       value: "Blacklisted",
+    //     },
+    //   ],
+    //   filterSearch: true,
+    //   onFilter: (value: string, record) =>
+    //     record.status.array.includes(value),
+    //   // render: (status: { 0: string; array: string[] }) => status.array[0],
+    //   render: (status: { 0: string; array: string[] }) => {
+    //     const statusValue = status.array[0];
   
-        // Define styles based on the status value
-        let statusStyle = {};
-        if (statusValue === "Inactive") {
-          statusStyle = { color: "#545F7D", borderRadius:"25px", padding:"12px", background:"#f5f5f7"  }; // Change to your desired style
-        } else if (statusValue === "Blacklisted") {
-          statusStyle = { color: "#E4033B", borderRadius:"25px", padding:"12px", background:"#fce6eb" }; 
+    //     // Define styles based on the status value
+    //     let statusStyle = {};
+    //     if (statusValue === "Inactive") {
+    //       statusStyle = { color: "#545F7D", borderRadius:"25px", padding:"12px", background:"#f5f5f7"  }; // Change to your desired style
+    //     } else if (statusValue === "Blacklisted") {
+    //       statusStyle = { color: "#E4033B", borderRadius:"25px", padding:"12px", background:"#fce6eb" }; 
 
-        } else if (statusValue === "Active") {
-          statusStyle = { color: "#39CD62" , borderRadius:"25px", padding:"12px", background:"#f3fcf6"}; // Change to your desired style
-        } else if (statusValue === "Pending") {
-          statusStyle = { color: "#E9B200" , borderRadius:"25px", padding:"12px", background:"#fdf7e6" }; 
-        }
+    //     } else if (statusValue === "Active") {
+    //       statusStyle = { color: "#39CD62" , borderRadius:"25px", padding:"12px", background:"#f3fcf6"}; // Change to your desired style
+    //     } else if (statusValue === "Pending") {
+    //       statusStyle = { color: "#E9B200" , borderRadius:"25px", padding:"12px", background:"#fdf7e6" }; 
+    //     }
   
-        return <span style={statusStyle}>{statusValue}</span>;
-      },
+    //     return <span style={statusStyle}>{statusValue}</span>;
+    //   },
 
-      width:"71px"
-    },
+    //   width:"71px"
+    // },
     
 
     {

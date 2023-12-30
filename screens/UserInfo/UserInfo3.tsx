@@ -14,8 +14,7 @@ import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { User } from "../../interfaces";
-import { fetchUsers } from '../../features/user/userActions';
-// import { fetchUserData } from "../../features/user/userActions2";
+import { fetchUsers } from '../../features/user/userActions3';
 import { format } from 'date-fns';
 import moment from "moment";
 
@@ -27,10 +26,10 @@ import moment from "moment";
       userName: item?.userName,
       email: item?.email,
       phoneNumber: item?.phoneNumber,
-      createdAt:  moment(item?.createdAt).format('DD-MM-YY'),
-createdAt2: format(new Date(item?.createdAt), 'dd, MMM yy'),
-    //   plan: item?.locations?.[0]?.replace('_', ' '),
-    //   active: item.status === 'NOT_STARTED' ? false : true,
+      createdAt2: format(new Date(item?.createdAt), 'MMM dd, yyyy'),
+      createdTime: moment(item?.createdTime, 'hh:mm:ss A').format('hh:mm A'), // Format createdTime
+      dateJoined: `${moment(item?.createdAt).format('MMM DD, YYYY')} ${moment(item?.createdTime, 'hh:mm:ss A').format('hh:mm A')}`,
+      status: item.status.array[0],
     }));
   };
 
@@ -40,6 +39,27 @@ const UserInfo3: React.FC = () => {
   const [popoverVisibility, setPopoverVisibility] = useState<Array<boolean>>([]);
   const [originalData, setOriginalData] = useState<Array<User>>([]);
   const [filteredData, setFilteredData] = useState<Array<User>>([]);
+
+  // const randomized = [12,3,5,6,3,4,8,20]
+  // const descendingSort = randomized.sort((a,b)=> {
+  //   return b - a;
+  // })
+  // // const ascendingSort = randomized.sort((a,b)=> {
+  // //   return a - b;
+  // // })
+
+  // const largest = descendingSort[0]
+  // console.log(largest,'largest')
+
+  // // const smallest = ascendingSort[0]
+  // // console.log(smallest,'smallest')
+
+  // //Most effective
+  // const largest2 = Math.max(...randomized)
+  // const smallest2 = Math.min(...randomized)
+  // console.log(largest2,'largest2')
+  // console.log(smallest2,'smallest2')
+
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -60,7 +80,7 @@ const UserInfo3: React.FC = () => {
   }, [data]);
 
   const realData = filteredData
-  console.log(realData,'realData == Main Dashboard')
+  // console.log(realData,'realData == Main Dashboard')
 
   if (isLoading) return <span style={{
     // border:"2px solid green",
@@ -663,9 +683,272 @@ const UserInfo3: React.FC = () => {
   //   );
   // };
 
+  
+  
+  const columns = [
+    {
+      title: (
+        <div style={{
+          display:"flex",
+          flexDirection:"row",
+          justifyContent:"left",
+          alignItems:"center",
+          gap:"5px"
+        }}><span className={`${styles.columnTitle} ${styles.orgTitle}`}>ORGANIZATION</span><Image
+          src={Filter}
+          alt="Custom Filter Icon"
+          style={{
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
+          }} /></div>
+      ),
+      dataIndex: "orgName",
+      key: "orgName",
+      className: styles.org,
+    },
+    {
+      title: (
+        <div style={{
+          display:"flex",
+          flexDirection:"row",
+          justifyContent:"left",
+          alignItems:"center",
+          gap:"5px"
+        }}><span className={`${styles.columnTitle} ${styles.nameTitle}`}>USERNAME</span><Image
+          src={Filter}
+          alt="Custom Filter Icon"
+          style={{
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
+          }} /></div>
+      ),
+      dataIndex: "userName",
+      key: "userName",
+      className: styles.name,
+    },
+    {
+      title: (
+        <div style={{
+          display:"flex",
+          flexDirection:"row",
+          justifyContent:"left",
+          alignItems:"center",
+          gap:"5px"
+        }}><span className={`${styles.columnTitle} ${styles.emailTitle}`}>EMAIL</span><Image
+          src={Filter}
+          alt="Custom Filter Icon"
+          style={{
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
+          }} /></div>
+      ),
+      dataIndex: "email",
+      key: "email",
+      className: styles.email2,
+    },
+    {
+      title: (
+        <div style={{
+          display:"flex",
+          flexDirection:"row",
+          justifyContent:"left",
+          alignItems:"center",
+          gap:"5px"
+        }}><span className={`${styles.columnTitle} ${styles.phoneTitle}`}>PHONE NUMBER</span><Image
+          src={Filter}
+          alt="Custom Filter Icon"
+          style={{
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
+          }} /></div>
+      ),
+      dataIndex: "phoneNumber",
+      key: "phoneNumber",
+      className: styles.phone,
+    },
+    {
+      title: (
+        <div style={{
+          display:"flex",
+          flexDirection:"row",
+          justifyContent:"left",
+          alignItems:"center",
+          gap:"5px"
+        }}><span className={`${styles.columnTitle} ${styles.dateTitle}`}>DATE JOINED</span><Image
+          src={Filter}
+          alt="Custom Filter Icon"
+          style={{
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
+          }} /></div>
+      ),
+      dataIndex: "dateJoined",
+      key: "dateJoined",
+      className: styles.date,
+    },
+    {
+      title: (
+        <div style={{
+          display:"flex",
+          flexDirection:"row",
+          justifyContent:"left",
+          alignItems:"center",
+          gap:"5px"
+        }}><span className={`${styles.columnTitle} ${styles.statusTitle}`}>STATUS</span><Image
+          src={Filter}
+          alt="Custom Filter Icon"
+          style={{
+            // width: 16,
+            // height: 16,
+            width: 13,
+            height: 10,
+          }} /></div>
+      ),
+      dataIndex: "status",
+      key: "status",
+    },
+    {
+      dataIndex: "action",
+      key: "action",
+      render:(_: any, record: any) => (
+        <Popover
+content={
+<div
+  style={{
+    width: "180px",
+    height: "130px",
+    borderRadius: "4px",
+    display: "flex",
+    flexDirection: "column",
+    border:"1px solid red"
+  }}
+  // className="" for media and positioning min-width 1000px
+>
+    <div
+    style={{
+      display: "flex",
+      flexDirection: "row",
+      gap: "15px",
+      alignItems: "center",
+      cursor: "pointer",
+    border:"1px solid yellow"
+    }}
+  >
+     <Link href={`/users/${record.id}`}>
+        <Image
+          src={ViewDetail}
+          alt="Custom Filter Icon"
+          style={{
+            width: 16,
+            height: 16,
+          }}
+        />
+        <p
+          style={{
+            fontSize: "14px",
+            fontWeight: "500",
+            lineHeight: "16px",
+            letterSpacing: "0em",
+            textAlign: "left",
+          }}
+        >
+          View Details
+        </p>
+    </Link>
+  </div>
+
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "row",
+      gap: "15px",
+      alignItems: "center",
+    }}
+  >
+    <Image
+      src={Blacklist}
+      alt="Custom Filter Icon"
+      style={{
+        width: 16,
+        height: 16,
+      }}
+    />
+    <p
+      style={{
+        fontSize: "14px",
+        fontWeight: "500",
+        lineHeight: "16px",
+        letterSpacing: "0em",
+        textAlign: "left",
+        cursor: "pointer",
+      }}
+    >
+      Blacklist User
+    </p>
+  </div>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "row",
+      gap: "15px",
+      alignItems: "center",
+    }}
+  >
+    <Image
+      src={Activate}
+      alt="Custom Filter Icon"
+      style={{
+        width: 16,
+        height: 16,
+      }}
+    />
+    <p
+      style={{
+        fontSize: "14px",
+        fontWeight: "500",
+        lineHeight: "16px",
+        letterSpacing: "0em",
+        textAlign: "left",
+        cursor: "pointer",
+      }}
+    >
+      Activate User
+    </p>
+  </div>
+</div>
+}
+// open={popoverVisibility[index]}
+trigger="click"
+// onOpenChange={() => handleIconClick(index)}
+>
+<Button type="link">
+<Image
+  src={ActionButton}
+  alt="Custom Icon"
+  style={{ width: 16, height: 16 }}
+/>
+</Button>
+</Popover>
+      )
+    },
+  ];
+  
+  
+
+
   return (
     <div className={styles.container}>
-      <Table dataSource={tableData(data)} className={styles.tab}>
+      {/* <Table dataSource={tableData(data)} className={styles.tab}>
         <Table.Column 
         title="ORGANIZATION" 
         dataIndex="orgName" 
@@ -703,16 +986,15 @@ const UserInfo3: React.FC = () => {
         key="createdAt"
         className={styles.date}
          />
-            {/* <Table.Column 
+            <Table.Column 
         title="STATUS" 
         dataIndex="status" 
         key="status"
-         /> */}
+         />
             <Table.Column
-              title="Action"
+              // title="Action"
               dataIndex="action"
               key="action"
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               render={(_: any, record: any) => (
                 <Popover
       content={
@@ -737,7 +1019,6 @@ const UserInfo3: React.FC = () => {
             border:"1px solid yellow"
             }}
           >
-             {/* <Link href={`/users/${row.original.id}`}> */}
              <Link href={`/users/${record.id}`}>
                 <Image
                   src={ViewDetail}
@@ -835,8 +1116,11 @@ const UserInfo3: React.FC = () => {
     </Popover>
               )}
             />
-      </Table>
+      </Table> */}
+
       I AM GOING TO HIDE 3 COLUMNS max-width: 600px
+  <Table dataSource={tableData(data)} className={styles.tab} columns={columns} />
+
     </div>
   );
 };

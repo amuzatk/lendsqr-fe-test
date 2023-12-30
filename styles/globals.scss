@@ -1,15 +1,28 @@
-/* styles/globals.less or styles/globals.css */
-// @import '~antd/dist/antd.css';
 
-// html,
-body, a{
+html
+// body, a
+{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  // border: 20px solid red;
   font-family: 'Work Sans', sans-serif;
   overflow-x: hidden;
+  // background-image: url('https://picsum.photos/1200/600'); 
+// background-image: url('/assets/images/pablo-sign-in.web');
+// background-repeat:repeat-x;
+
 }
-// body {
-//   font-family: 'Your Selected Font Here', sans-serif;
+
+// // globals.css
+// html, body, a {
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+//   font-family: 'Work Sans', sans-serif;
+//   overflow-x: hidden;
+//   background-image: url('/assets/images/pablo.svg'); 
+//   // background-repeat: no-repeat;
+//   background-size: cover;
+//   background-attachment: fixed;
+//   // background-size: contain;
 // }
