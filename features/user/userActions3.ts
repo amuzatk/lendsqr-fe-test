@@ -97,8 +97,16 @@ export const generateMockData = (): User[] => {
   return mockData;
 };
 
-// Replace the fetchUsers function with the mock data
-export const fetchUsers = (): Promise<User[]> => {
+// // Replace the fetchUsers function with the mock data
+// export const fetchUsers = (): Promise<User[]> => {
+//   const mockData = generateMockData();
+//   return Promise.resolve(mockData);
+// };
+
+// Update the fetchUsers function in userActions3.ts
+export const fetchUsers = (filters?: any): Promise<User[]> => {
   const mockData = generateMockData();
+
+  // Return the filtered users
   return Promise.resolve(mockData);
 };

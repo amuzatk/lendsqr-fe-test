@@ -41,7 +41,7 @@ const UserInfo3: React.FC = () => {
   const [filteredData, setFilteredData] = useState<Array<User>>([]);
 
   const handleFilterVisibility = () => {
-    console.log("Filter icon clicked");
+    // console.log("Filter icon clicked");
     // setVisible(!visible);
     setFilterVisible(!isFilterVisible);
   }
@@ -50,12 +50,14 @@ const UserInfo3: React.FC = () => {
 
   // const dispatch = useDispatch();
   // const router = useRouter();
-  const { data, isLoading, isError } = useQuery<User[], Error>('users', fetchUsers);
+  // const { data, isLoading, isError } = useQuery<User[], Error>('users', fetchUsers);
+  const { data, isLoading, isError } = useQuery<User[], Error>('users', () => fetchUsers(form.getFieldsValue()));
+
   console.log(data, 'data3 ==========')
 
   useEffect(() => {
     if (data) {
-      // setOriginalData(data);
+      setOriginalData(data);
       setFilteredData(data);
       // initializePopoverVisibility(data);
     }
@@ -99,14 +101,8 @@ const UserInfo3: React.FC = () => {
             cursor:"pointer"
           }} 
           />
-
 { isFilterVisible &&
-<div style={{ padding: 8,
-  border:'1px solid red',
-  position:"absolute",
-  top:'50px',
-  // zIndex:'999'
-   }}>
+<div className={styles.formContainer}>
           <Form
             form={form}
             layout="vertical"
@@ -120,7 +116,11 @@ const UserInfo3: React.FC = () => {
             }}
           >
             <Form.Item label="Organization" name="orgName">
-              <Select mode="multiple" placeholder="Select organizations">
+              <Select 
+              // mode="multiple" 
+              placeholder="Select organizations" 
+              showSearch
+              >
                 {originalData.map((item) => (
                   <Select.Option
                     key={item.orgName}
@@ -130,6 +130,7 @@ const UserInfo3: React.FC = () => {
                   </Select.Option>
                 ))}
               </Select>
+
             </Form.Item>
             <Form.Item label="Username" name="username">
               <Input placeholder="Enter username" />
@@ -144,13 +145,13 @@ const UserInfo3: React.FC = () => {
               <Input placeholder="Enter phone number" />
             </Form.Item>
             <Form.Item label="Status" name="status">
-              <Select mode="multiple" placeholder="Select statuses">
+              <Select mode="multiple" placeholder="Select statuses" >
                 {data.map((item) => (
                   <Select.Option
-                    key={item.accountNumber}
-                    value={item.accountNumber}
+                    key={item?.status?.array[0]}
+                    value={item?.status?.array[0]}
                   >
-                    {item.accountNumber}
+                    {item?.status?.array[0]}
                   </Select.Option>
                 ))}
               </Select>
@@ -437,9 +438,6 @@ trigger="click"
       )
     },
   ];
-  
-  
-
 
   return (
     <div className={styles.container}>
