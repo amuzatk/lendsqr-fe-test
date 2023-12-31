@@ -13,12 +13,14 @@
 // };
 
 
-//features/user/userActions.ts SOLUTION FOR ANTD TABLE
-
-// import { AnyAction } from 'redux';
-// import axios from '../../lib/axiosConfig';
 import { User } from '../../interfaces/index';
 import faker from 'faker';
+
+// Function to replace special characters with real letters
+const replaceSpecialChars = (input: string): string => {
+  return input.replace(/-/g, faker.random.arrayElement(['A', 'B', 'C', 'D', 'E']))
+              .replace(/,/g, faker.random.arrayElement(['X', 'Y', 'Z']));
+};
 
 export const generateMockData = (): User[] => {
   const mockData: User[] = [];
@@ -31,10 +33,15 @@ export const generateMockData = (): User[] => {
     const createdAt = new Date().toISOString();
     const createdTime = new Date().toLocaleTimeString(); // Adding createdTime
 
+    const orgName = replaceSpecialChars(faker.company.companyName().toLowerCase().replace(/\s/g, '-').substring(0, 8));
+    const firstName = replaceSpecialChars(faker.name.firstName().substring(0, 5));
+    const lastName = replaceSpecialChars(faker.name.lastName().substring(0, 5));
+    const email = `${firstName}@${orgName}.com`;
+    const phoneNumber = replaceSpecialChars(faker.phone.phoneNumber().replace(/\D/g, '').substring(0, 11));
+
     const user: User = {
       accountBalance: (Math.random() * 5000).toFixed(2),
       accountNumber: `LJDFJCDNSJD${i}`,
-      // createdAt: new Date().toISOString(),
       createdAt,
       createdTime, // Adding createdTime
       education: {
@@ -47,38 +54,38 @@ export const generateMockData = (): User[] => {
           1: (Math.random() * 200).toFixed(2),
           length: 2,
         },
-        officeEmail: `${faker.name.firstName()}@yahoo.com`,
+        officeEmail: `${firstName}@yahoo.com`, // Use firstName for officeEmail
         sector: "FinTech",
       },
-      email: `${faker.name.firstName()}.${faker.name.lastName()}@gmail.com`,
+      email,
       guarantor: {
-        address: `${faker.address.streetName()} ${faker.address.city()}`,
-        firstName: faker.name.firstName(),
+        address: replaceSpecialChars(`${faker.address.streetName()} ${faker.address.city()}`),
+        firstName: replaceSpecialChars(faker.name.firstName()),
         gender: faker.random.arrayElement(["Male", "Female"]),
-        lastName: faker.name.lastName(),
-        phoneNumber: faker.phone.phoneNumberFormat(),
+        lastName: replaceSpecialChars(faker.name.lastName()),
+        phoneNumber,
       },
       id: i.toString(),
       lastActiveDate: new Date().toISOString(),
-      orgName: faker.company.companyName().toLowerCase().replace(/\s/g, '-'),
-      phoneNumber: faker.phone.phoneNumber(),
+      orgName,
+      phoneNumber,
       profile: {
-        address: faker.address.streetAddress(),
+        address: replaceSpecialChars(faker.address.streetAddress()),
         avatar: `https://i.pravatar.cc/200?u=${i}`,
         bvn: `${Math.floor(Math.random() * 1000000000)}`,
         currency: "NGN",
-        firstName: faker.name.firstName(),
+        firstName,
         gender: faker.random.arrayElement(["Male", "Female"]),
-        lastName: faker.name.lastName(),
-        phoneNumber: faker.phone.phoneNumber(),
+        lastName,
+        phoneNumber,
       },
       socials: {
-        facebook: `@${faker.company.companyName().toLowerCase().replace(/\s/g, '-')}`,
-        instagram: `@${faker.company.companyName().toLowerCase().replace(/\s/g, '-')}`,
-        twitter: `@${faker.company.companyName().toLowerCase().replace(/\s/g, '-')}`,
+        facebook: `@${orgName}`,
+        instagram: `@${orgName}`,
+        twitter: `@${orgName}`,
       },
-      userName: `${faker.name.firstName()}.${faker.name.lastName()}`,
-       status: {
+      userName: `${firstName}.${lastName}`,
+      status: {
         0: randomStatus,
         array: [randomStatus],
       },
@@ -90,10 +97,8 @@ export const generateMockData = (): User[] => {
   return mockData;
 };
 
-
 // Replace the fetchUsers function with the mock data
 export const fetchUsers = (): Promise<User[]> => {
   const mockData = generateMockData();
   return Promise.resolve(mockData);
 };
-

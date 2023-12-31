@@ -206,6 +206,7 @@ const UserInfo: React.FC = () => {
       // width: "30%",
       width:"94px",
       // height:"16px",
+      className: styles.name,
     },
     {
       // title: "EMAIL",

@@ -106,7 +106,9 @@ export interface User {
   // accountBalance: number;
   accountNumber: string;
   createdAt: string;
-  createdTime: string,
+  // createdAt2: string;
+  // dateJoined: string;
+  createdTime: string;
   education: Education;
   email: string;
   guarantor: Guarantor;
