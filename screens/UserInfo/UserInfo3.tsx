@@ -23,19 +23,22 @@ import CustomIcon from "../../components/svgIcons/CallendarIcon";
 
  const tableData = (items: User[]) => {
     return items.map((item) => ({
-      key: item?.id,
+      // key: item?.id,
+      id: item?.id,
+      // key: item?.id || '',
       orgName: item?.orgName,
       userName: `${item?.profile?.firstName} ${item?.profile?.lastName}`,
       email: item?.email,
       phoneNumber: item?.phoneNumber,
-      createdAt2: format(new Date(item?.createdAt), 'MMM dd, yyyy'),
-      createdTime: moment(item?.createdTime, 'hh:mm:ss A').format('hh:mm A'),
+      // createdAt: format(new Date(item?.createdAt), 'MMM dd, yyyy'),
+      // createdTime: moment(item?.createdTime, 'hh:mm:ss A').format('hh:mm A'),
       dateJoined: `${moment(item?.createdAt).format('MMM DD, YYYY')} ${moment(item?.createdTime, 'hh:mm:ss A').format('hh:mm A')}`,
       status: item.status.array[0],
     }));
   };
 
-const UserInfo3: React.FC = () => {
+// const UserInfo3: React.FC = () => {
+  const UserInfo3: React.FunctionComponent = () => {
   const [form] = Form.useForm();
   const [isFilterVisible, setFilterVisible] = useState(false);
   // const [popoverVisibility, setPopoverVisibility] = useState<Array<boolean>>([]);
@@ -66,8 +69,8 @@ const UserInfo3: React.FC = () => {
   }, [data]);
 
   const realData = filteredData
-  // console.log(realData,'realData == Main Dashboard')
-
+  console.log(realData,'realData == Main Dashboard')
+  
   if (isLoading) return <span style={{
     // border:"2px solid green",
     display:"flex",
@@ -77,10 +80,14 @@ const UserInfo3: React.FC = () => {
   }}> <Spin size="large" /></span>;
   if (isError) return <Alert message="Error fetching data" type="error" />;
 
-  
-  
-  const columns = [
-  // const columns: ColumnsType<User> = [
+      const columns: ColumnsType<{ 
+        id: string;       
+        orgName: string; 
+        userName: string; 
+        email: string; 
+        phoneNumber: string; 
+        dateJoined: string; 
+        status: string }> = [      
     {
       title: (
         <div style={{
@@ -401,6 +408,7 @@ content={
     }}
   >
      <Link href={`/users/${record.id}`}>
+     {console.log(record.id)}
         <Image
           src={ViewDetail}
           alt="Custom Filter Icon"
@@ -421,6 +429,35 @@ content={
           View Details
         </p>
     </Link>
+{/* {record.id && (
+  <div>
+    <p>record.id: {record.id}</p>
+    {console.log(record.id) }
+    <Link href={`/users/${record.id}`}>
+      <Image
+        src={ViewDetail}
+        alt="Custom Filter Icon"
+        style={{
+          width: 16,
+          height: 16,
+        }}
+      />
+      <p
+        style={{
+          fontSize: "14px",
+          fontWeight: "500",
+          lineHeight: "16px",
+          letterSpacing: "0em",
+          textAlign: "left",
+        }}
+      >
+        View Details
+      </p>
+    </Link>
+  </div>
+)} */}
+
+
   </div>
 
   <div
@@ -497,6 +534,14 @@ trigger="click"
 </Popover>
       )
     },
+    // {
+    //   title: "ID", // You can customize the title as needed
+    //   dataIndex: "id",
+    //   key: "id",
+    //   render: (id: string) => <span>{id}</span>,
+    //   // Add any additional styling or configurations if needed
+    // },
+    
   ];
 
   return (

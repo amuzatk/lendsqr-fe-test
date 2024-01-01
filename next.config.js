@@ -1,13 +1,15 @@
+ 
+//   // next.config.js
 // module.exports = {
-//     images: {
-//       domains: ['i.pravatar.cc'],
-//     },
-//   };
-  
-  // next.config.js
+//   images: {
+//     domains: ['cloudflare-ipfs.com'],
+//   },
+// };
 
+// next.config.js
 module.exports = {
   images: {
-    domains: ['cloudflare-ipfs.com'],
+    domains: ['i.pravatar.cc'],
   },
 };
+

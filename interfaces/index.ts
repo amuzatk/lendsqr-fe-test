@@ -1,64 +1,9 @@
-// export interface Education {
-//   level: string;
-//   employmentStatus: string;
-//   sector: string;
-//   duration: string;
-//   officeEmail: string;
-// }
-
-// export interface MonthlyIncome extends Array<string> {}
-
-// export interface Guarantor {
-//   firstName: string;
-//   lastName: string;
-//   phoneNumber: string;
-//   gender: string;
-//   address: string;
-// }
-
-// export interface Profile {
-//   firstName: string;
-//   lastName: string;
-//   phoneNumber: string;
-//   avatar: string;
-//   gender: string;
-//   address: string;
-//   bvn: string;
-//   currency:string
-// }
-
-// export interface Socials {
-//   facebook: string;
-//   instagram: string;
-//   twitter: string;
-// }
-
-// export interface User {
-//   userId: string;
-//   status: string;
-//   accountBalance: string;
-//   accountNumber: string;
-//   createdAt: string;
-//   education: Education;
-//   email: string;
-//   guarantor: Guarantor;
-//   id: string;
-//   lastActiveDate: string;
-//   orgName: string;
-//   phoneNumber: string;
-//   userName: string;
-//   date: string;
-//   profile: Profile;
-//   socials: Socials;
-//   // user: [];
-// }
-
-export interface MonthlyIncome {
+ interface MonthlyIncome {
   [key: number]: string;
   length: number;
 }
 
-export interface Education {
+ interface Education {
   duration: string;
   employmentStatus: string;
   level: string;
@@ -68,7 +13,7 @@ export interface Education {
   sector: string;
 }
 
-export interface Guarantor {
+ interface Guarantor {
   address: string;
   firstName: string;
   gender: string;
@@ -76,7 +21,7 @@ export interface Guarantor {
   phoneNumber: string;
 }
 
-export interface Profile {
+ interface Profile {
   address: string;
   avatar: string;
   bvn: string;
@@ -87,7 +32,7 @@ export interface Profile {
   phoneNumber: string;
 }
 
-export interface Socials {
+ interface Socials {
   facebook: string;
   instagram: string;
   twitter: string;
@@ -103,11 +48,8 @@ interface Status {
 
 export interface User {
   accountBalance: string;
-  // accountBalance: number;
   accountNumber: string;
   createdAt: string;
-  // createdAt2: string;
-  // dateJoined: string;
   createdTime: string;
   education: Education;
   email: string;
