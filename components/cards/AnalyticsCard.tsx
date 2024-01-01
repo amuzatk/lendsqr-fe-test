@@ -1,21 +1,3 @@
-// import React from "react";
-// import styles from "../../styles/Analytics.module.scss";
-// import Image from "next/image";
-// import Bell from "../../assets/icons/bell.webp";
-
-// const AnalyticsCard = () => {
-//   return (
-//     <div className={styles.container}>
-//       <div className={styles.main}>
-//         <Image src={Bell} alt="Bell Icon" width={40} height={40} />
-//         <p>Users</p>
-//         <span className={styles.amount}>2,453</span>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AnalyticsCard;
 
 // Updated AnalyticsCard component
 import React from "react";
@@ -46,3 +28,35 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({ data }) => {
 };
 
 export default AnalyticsCard;
+
+
+// // Updated AnalyticsCard component
+// import React from "react";
+// import styles from "../../styles/dashboard/Analytics.module.scss";
+// import Image from "next/image";
+// import { User } from "../../interfaces";
+
+// interface AnalyticsCardProps {
+//   data: {
+//     image: string;
+//     title: string;
+//     amount: string;
+//   };
+// }
+
+// const AnalyticsCard: React.FC<User[]> = ({ data }) => {
+//   // const { image, title, amount } = data;
+//   console.log(data,'data props');
+
+//   return (
+//     <div className={styles.container}>
+//       <div className={styles.main}>
+//         {/* <Image src={image} alt={`${title} Icon`} width={40} height={40} />
+//         <p>{title}</p>
+//         <span className={styles.amount}>{amount}</span> */}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default AnalyticsCard;

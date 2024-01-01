@@ -20,6 +20,25 @@ height: 600px;
 border-radius: 4px;
 border: 1px solid rgba(84, 95, 125, 0.14)
 // border: linear-gradient(0deg, rgba(84, 95, 125, 0.14), rgba(84, 95, 125, 0.14)), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+
+
+}
+form{
+    border: 1px solid red;
+
+    input{
+        height: 40px;
+    }
+
+    .selet{
+        // color: red;
+        height: 40px;
+    }
+    .label{
+        color: red;
+    border: 1px solid rgb(0, 81, 255);
+
+    }
 }
 
     .org,.name,.email2,.phone,.date,.status{

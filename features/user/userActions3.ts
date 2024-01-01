@@ -97,16 +97,27 @@ export const generateMockData = (): User[] => {
   return mockData;
 };
 
-// // Replace the fetchUsers function with the mock data
-// export const fetchUsers = (): Promise<User[]> => {
+// Replace the fetchUsers function with the mock data
+export const fetchUsers = (): Promise<User[]> => {
+  const mockData = generateMockData();
+  return Promise.resolve(mockData);
+};
+
+// // Update the fetchUsers function in userActions3.ts
+// export const fetchUsers = (filters?: any): Promise<User[]> => {
 //   const mockData = generateMockData();
+
+//   // Return the filtered users
 //   return Promise.resolve(mockData);
 // };
 
-// Update the fetchUsers function in userActions3.ts
-export const fetchUsers = (filters?: any): Promise<User[]> => {
+export const generateMockAnalyticsData = (): { users: string; activeUsers: string; usersWithLoan: string; usersWithSavings: string } => {
   const mockData = generateMockData();
 
-  // Return the filtered users
-  return Promise.resolve(mockData);
+  const users = mockData.length.toString();
+  const activeUsers = mockData.filter((user) => user.status.array.includes("Active")).length.toString();
+  const usersWithLoan = mockData.filter((user) => parseFloat(user.education.loanRepayment) > 0).length.toString();
+  const usersWithSavings = mockData.filter((user) => parseFloat(user.accountBalance) > 0).length.toString();
+
+  return { users, activeUsers, usersWithLoan, usersWithSavings };
 };

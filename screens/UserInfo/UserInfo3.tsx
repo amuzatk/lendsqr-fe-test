@@ -17,6 +17,8 @@ import { User } from "../../interfaces";
 import { fetchUsers } from '../../features/user/userActions3';
 import { format } from 'date-fns';
 import moment from "moment";
+import { DatePicker } from "antd";
+import CustomIcon from "../../components/svgIcons/CallendarIcon";
 
 
  const tableData = (items: User[]) => {
@@ -50,10 +52,10 @@ const UserInfo3: React.FC = () => {
 
   // const dispatch = useDispatch();
   // const router = useRouter();
-  // const { data, isLoading, isError } = useQuery<User[], Error>('users', fetchUsers);
-  const { data, isLoading, isError } = useQuery<User[], Error>('users', () => fetchUsers(form.getFieldsValue()));
+  const { data, isLoading, isError } = useQuery<User[], Error>('users', fetchUsers);
+  // const { data, isLoading, isError } = useQuery<User[], Error>('users', () => fetchUsers(form.getFieldsValue()));
 
-  console.log(data, 'data3 ==========')
+  // console.log(data, 'data3 ==========')
 
   useEffect(() => {
     if (data) {
@@ -107,19 +109,64 @@ const UserInfo3: React.FC = () => {
             form={form}
             layout="vertical"
             initialValues={{ orgName: [] }}
+
             onFinish={(values) => {
-              const newFilteredData = originalData.filter((item) =>
-                values.orgName.includes(item.orgName)
-              );
+              let newFilteredData = originalData;         
+              // Filter by organization name
+              if (values.orgName && values.orgName.length > 0) {
+                newFilteredData = newFilteredData.filter((item) =>
+                  values.orgName.includes(item.orgName)
+                );
+              }    
+              
+              // Filter by username
+  if (values.userName) {
+    newFilteredData = newFilteredData.filter((item) =>
+      item.userName.toLowerCase().includes(values.userName.toLowerCase())
+    );
+  }
+
+  // Filter by email
+  if (values.email) {
+    newFilteredData = newFilteredData.filter((item) =>
+      item.email.toLowerCase().includes(values.email.toLowerCase())
+    );
+  }
+
+    // Filter by Phone number
+    if (values.phoneNumber) {
+      newFilteredData = newFilteredData.filter((item) =>
+        item.phoneNumber.toLowerCase().includes(values.phoneNumber.toLowerCase())
+      );
+    }
+
+  // Filter by date
+if (values.createdAt) {
+  const selectedDate = moment(values.createdAt).format('MMM DD, YYYY');
+  newFilteredData = newFilteredData.filter((item) =>
+    item.createdAt.toLowerCase().includes(selectedDate.toLowerCase())
+  );
+}
+
+  // Filter by status
+  if (values.status && values.status.length > 0) {
+    newFilteredData = newFilteredData.filter((item) =>
+      values.status.includes(item.status.array[0])
+    );
+  }
+
               setFilteredData(newFilteredData);
-              // setVisible(false);
             }}
           >
-            <Form.Item label="Organization" name="orgName">
+            <Form.Item 
+            label="Organization" 
+            className={styles.label}
+            name="orgName">
               <Select 
-              // mode="multiple" 
-              placeholder="Select organizations" 
+              mode="multiple" 
+              placeholder="Select" 
               showSearch
+              className={styles.selet}
               >
                 {originalData.map((item) => (
                   <Select.Option
@@ -132,29 +179,42 @@ const UserInfo3: React.FC = () => {
               </Select>
 
             </Form.Item>
-            <Form.Item label="Username" name="username">
-              <Input placeholder="Enter username" />
+            <Form.Item label="Username" name="userName">
+              <Input placeholder="User" />
             </Form.Item>
             <Form.Item label="Email" name="email">
-              <Input placeholder="Enter email" />
+              <Input placeholder="Email" />
             </Form.Item>
-            <Form.Item label="Date" name="date">
-              <Input placeholder="Enter date" />
+            <Form.Item label="Date" name="createdAt">
+
+<DatePicker
+    style={{ width: "100%", height:"40px" }}
+    placeholder="Date"
+    format="MMM DD, YYYY"
+    suffixIcon={<CustomIcon />}
+    onChange={(date, dateString) => {
+      // Handle the date change if needed
+      // console.log(date,'Date selected')
+    }}
+  />
             </Form.Item>
-            <Form.Item label="Phone Number" name="phone">
-              <Input placeholder="Enter phone number" />
+            <Form.Item label="Phone Number" name="phoneNumber" className={styles.label}>
+              <Input placeholder="Phone Number" />
             </Form.Item>
-            <Form.Item label="Status" name="status">
-              <Select mode="multiple" placeholder="Select statuses" >
-                {data.map((item) => (
-                  <Select.Option
-                    key={item?.status?.array[0]}
-                    value={item?.status?.array[0]}
-                  >
-                    {item?.status?.array[0]}
-                  </Select.Option>
-                ))}
-              </Select>
+            <Form.Item  label="Status" name="status">
+               <Select 
+                // style={{height:"40px" }}
+                className={styles.selet}
+                mode="multiple" 
+                placeholder="Select"
+                >
+    {/* Extracting unique status values from data */}
+    {Array.from(new Set(data.map(item => item?.status?.array[0]))).map(status => (
+      <Select.Option key={status} value={status}>
+        {status}
+      </Select.Option>
+    ))}
+  </Select>
             </Form.Item>
 
             <Form.Item>
@@ -441,7 +501,7 @@ trigger="click"
 
   return (
     <div className={styles.container}>
-  <Table dataSource={tableData(data)} className={styles.tab} columns={columns} />
+  <Table dataSource={tableData(realData)} className={styles.tab} columns={columns} />
     </div>
   );
 };

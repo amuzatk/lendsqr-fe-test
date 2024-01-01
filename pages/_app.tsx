@@ -13,7 +13,6 @@
 // export default MyApp;
 
 // src/_app.tsx
-
 import React from 'react';
 import { Provider } from 'react-redux';
 import { ReactQueryDevtools } from 'react-query/devtools';
