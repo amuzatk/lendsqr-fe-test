@@ -63,62 +63,6 @@
 
 // export default UserDetailsPage;
 
-// // Import necessary modules
-// import { useRouter } from 'next/router';
-// import { useEffect, useState } from 'react';
-// import UserDetailMainPage from '../../screens/UserDetailPage/UserMainPage';
-// import { generateMockData } from '../../features/user/userActions3';
-// import Layout from '../../components/Layout';
-// import { User } from '../../interfaces';
-
-
-// // Your [userId].tsx component
-// const UserDetails = () => {
-//   // Initialize router
-//   const router = useRouter();
-//   // console.log(router,'router @ [userId]')
-  
-//   // Extract userId from the router
-//   const { userId } = router.query;
-//   // console.log(userId,'userId @ [userId]')
-
-//   // State to hold user data
-//   const [userData, setUserData] = useState(null);
-
-//   // Fetch user data based on userId
-//   useEffect(() => {
-//     const mockData = generateMockData();
-//     // console.log(mockData, 'Mock Data @ [userId].tsx');
-
-//     // Check if userId is available and is a number
-//     if (userId && !isNaN(Number(userId))) {
-//       // Find the user with the matching ID from the mock data
-//       const user = mockData.find((user) => user.id === userId);
-//       // console.log(user, 'user details @ [userId].tsx')
-
-//       if (user) {
-//         setUserData(user);
-//       } else {
-//         console.error('User not found');
-//       }
-//     }
-//   }, [userId]);
-
-//   // Render component based on user data
-//   return (
-//     <Layout isDetailPage={true}>
-//       {userData ? (
-//       <UserDetailMainPage userDetails={userData} />
-//       ) : (
-//         <p>Loading...</p>
-//       )}
-//     </Layout>
-//   );
-// };
-
-// export default UserDetails;
-
-
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import UserDetailMainPage from '../../screens/UserDetailPage/UserMainPage';
@@ -136,25 +80,6 @@ const UserDetails = () => {
 
   // State to hold user data
   const [userData, setUserData] = useState<User | null>(null); // Use the User type
-
-  // Fetch user data based on userId
-  // useEffect(() => {
-  //   const mockData = generateMockData();
-
-  //   // Check if userId is available and is a number
-  //   if (userId && !isNaN(Number(userId))) {
-  //     // Find the user with the matching ID from the mock data
-  //     const user = mockData.find((user) => user.id === userId);
-  // console.log(user,'user')
-
-
-  //     if (user) {
-  //       setUserData(user);
-  //     } else {
-  //       console.error('User not found');
-  //     }
-  //   }
-  // }, [userId]);
 
   useEffect(() => {
     const mockData = generateMockData();
@@ -187,27 +112,4 @@ const UserDetails = () => {
 };
 
 export default UserDetails;
-
-
-// // pages/[userId].tsx
-// import { useRouter } from 'next/router';
-
-// const UserDetailsPage = () => {
-//   const router = useRouter();
-//   const { userId } = router.query;
-//   console.log(router.query);
-
-//   // console.log(userId,'teeeesst')
-
-//   // Use the userId as needed in your component
-
-//   return (
-//     <div>
-//       <h1>User Details Page</h1>
-//       <p>User ID: {userId}</p>
-//     </div>
-//   );
-// };
-
-// export default UserDetailsPage;
 
