@@ -26,6 +26,7 @@ export {
     StarIcon,
     WalletIcon,
     HeartIconStorefront2,
-    BellIcon
+    BellIcon,
+    CustomIcon,
   } from './svgs';
   

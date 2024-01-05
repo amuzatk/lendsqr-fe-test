@@ -55,7 +55,7 @@ import Briefcase from "../../../../public/assets/icons/Briefcase.png";
 import Image from "next/image";
 import Link from "next/link";
 import { UserMenu } from "../../../../utils/sidebarData";
-import { VENDOR_DASHBOARD_LINKS, NAV_TOP_2_LINKS} from '../../../../navigations/links'
+import { VENDOR_DASHBOARD_LINKS} from '../../../../navigations/links'
 import { useRouter } from 'next/router';
 
 const SideBar = () => {
@@ -72,15 +72,33 @@ const SideBar = () => {
       {VENDOR_DASHBOARD_LINKS.map((menu) => {
           const isActive = router.pathname === menu.LINK;
           // const isActive = route === nav.LINK;
+
+          const handleContent = () => (
+            <div style={{backgroundColor: isActive ? '#F3FCFC' : 'white',
+            display:"flex",
+            flexDirection:"row",
+            columnGap:"10px",
+            padding:"20px",
+            // rowGap:"20px"
+            }}>
+              {menu.ICON(isActive)}
+              <div style={{color: isActive ? '#213F7D' : '#213F7D'}}>
+              {menu.TITLE}
+              </div>
+            </div>
+          )
           return (
-            <div
-          // className={nav ? [styles.menu, styles.active].join(" ") : styles.menu}
-              // className={`menu-item ${isActive && "active"}`}
-              className={isActive ?  styles.active : styles.menu}
-              key={menu.LINK}
-            >
-              {/* <i className={menu.icon}></i> */}
-              <Link href={menu.LINK}>{menu.TITLE}</Link>
+            // <div
+            //   className={isActive ?  styles.active : styles.menu}
+            //   key={menu.LINK}
+            // >
+            //   <Link href={menu.LINK}>{menu.TITLE}</Link>
+            // </div>
+            <div>
+               <Link href={menu.LINK}>
+                {/* {menu.TITLE} */}
+                {handleContent()}
+               </Link>
             </div>
           );
         })}
