@@ -90,7 +90,7 @@ const SideBar = () => {
                 fontWeight:"400",
               }}
                 >
-              {menu.TITLE}
+              {/* {menu.TITLE} */}
               </div>
             </div>
           )
