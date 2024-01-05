@@ -82,7 +82,11 @@ const SideBar = () => {
             // rowGap:"20px"
             }}>
               {menu.ICON(isActive)}
-              <div style={{color: isActive ? '#213F7D' : '#213F7D'}}>
+              <div style={{
+                // color: isActive ? '#213F7D' : '#213F7D'
+                color: isActive ? '#213F7D' : '#8294B6'
+              }}
+                >
               {menu.TITLE}
               </div>
             </div>
