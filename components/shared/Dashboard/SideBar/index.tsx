@@ -84,7 +84,11 @@ const SideBar = () => {
               {menu.ICON(isActive)}
               <div style={{
                 // color: isActive ? '#213F7D' : '#213F7D'
-                color: isActive ? '#213F7D' : '#8294B6'
+                color: isActive ? '#213F7D' : '#8294B6',
+                fontSize:"16px",
+                lineHeight:"18.77px",
+                fontWeight:"400",
+                // width:"87px"
               }}
                 >
               {menu.TITLE}
