@@ -88,7 +88,6 @@ const SideBar = () => {
                 fontSize:"16px",
                 lineHeight:"18.77px",
                 fontWeight:"400",
-                // width:"87px"
               }}
                 >
               {menu.TITLE}
