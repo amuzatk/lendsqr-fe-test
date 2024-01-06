@@ -122,7 +122,7 @@ const SideBar = () => {
 
       return (
         <div className={styles.items} key={menu.SLUG}>
-          <Link href={menu.LINK}>
+          <Link className={styles.item} href={menu.LINK}>
             {handleContent()}
           </Link>
         </div>
