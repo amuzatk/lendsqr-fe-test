@@ -65,10 +65,10 @@
 
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import UserDetailMainPage from '../../screens/UserDetailPage/UserMainPage';
-import { generateMockData } from '../../features/user/userActions3';
-import Layout from '../../components/Layout';
-import { User } from '../../interfaces';
+import UserDetailMainPage from '../../../screens/UserDetailPage/UserMainPage';
+import { generateMockData } from '../../../features/user/userActions3';
+import Layout from '../../../components/Layout';
+import { User } from '../../../interfaces';
 
 // Your [userId].tsx component
 const UserDetails = () => {

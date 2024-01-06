@@ -4,6 +4,16 @@ import {
 
 export const VENDOR_DASHBOARD_LINKS = [
   {
+    TITLE: 'Dashboard',
+    // LINK: '/vendor/[vendorId]',
+    LINK: '/dashboard',
+    SLUG: 'dashboard',
+    // PROTECTED: true,
+    // ISBUSINESS: true,
+    ISDASHBOARD: true,
+    ICON: (isActive: boolean) => <CustomIcon isActive={isActive} />,
+  },
+  {
     TITLE: 'Users',
     // LINK: '/vendor/[vendorId]',
     LINK: '/dashboard/users',

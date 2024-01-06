@@ -915,7 +915,7 @@ content={
     border:"1px solid yellow"
     }}
   >
-     <Link href={`/users/${record.id}`}>
+     <Link style={{}} href={`/dashboard/users/${record.id}`}>
      {console.log(record.id)}
         <Image
           src={ViewDetail}
