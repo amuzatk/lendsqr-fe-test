@@ -74,7 +74,10 @@ const SideBar = () => {
           // const isActive = route === nav.LINK;
 
           const handleContent = () => (
-            <div style={{backgroundColor: isActive ? '#F3FCFC' : 'white',
+            <div 
+            style={{
+              backgroundColor: isActive ? '#F3FCFC' : 'white',
+              borderLeft:isActive ? '4px solid #39CDCC' : 'white',
             display:"flex",
             flexDirection:"row",
             columnGap:"10px",
