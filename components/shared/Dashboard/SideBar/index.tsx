@@ -132,10 +132,10 @@ const SideBar = () => {
 
   return (
     <div className={styles.main}>
-      {/* <div className={styles.brief}>
+      <div className={styles.brief}>
         <Image src={Briefcase} width={16} height={16} alt="Briefcase" />
         <SelectTemplate />
-      </div> */}
+      </div>
       <div className={styles.menu}>
         <div>
           <p>CUSTOMERS</p>

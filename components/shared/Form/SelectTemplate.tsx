@@ -58,7 +58,7 @@ const SelectTemplate = () => {
       <Select
        defaultValue="Switch Organization"
         // defaultValue={provinceData[0]}
-        style={{ width: "200px", fontSize:"80px", border:"none" }}
+        style={{ width: "180px", fontSize:"80px", border:"none" }}
         onChange={handleProvinceChange}
         options={provinceData.map((province) => ({ label: province, value: province }))}
       />
