@@ -82,50 +82,25 @@ const SideBar = () => {
             // rowGap:"20px"
             }}>
               {menu.ICON(isActive)}
-              <div style={{
+              <div 
+              style={{
                 // color: isActive ? '#213F7D' : '#213F7D'
                 color: isActive ? '#213F7D' : '#8294B6',
-                fontSize:"16px",
-                lineHeight:"18.77px",
-                fontWeight:"400",
               }}
+              className={styles.menuTitle}
                 >
               {menu.TITLE}
               </div>
             </div>
           )
           return (
-            // <div
-            //   className={isActive ?  styles.active : styles.menu}
-            //   key={menu.LINK}
-            // >
-            //   <Link href={menu.LINK}>{menu.TITLE}</Link>
-            // </div>
-            <div>
-               <Link href={menu.LINK}>
-                {/* {menu.TITLE} */}
+            <div className={styles.items}>
+               <Link className={styles.item} href={menu.LINK}>
                 {handleContent()}
                </Link>
             </div>
           );
         })}
-        {/* {VENDOR_DASHBOARD_LINKS.map((menu) => {
-          const isActive = router.pathname === menu.path;
-          return (
-            <div
-              className={`menu-item ${isActive && "active"}`}
-              key={menu.path}
-            >
-              <i className={menu.icon}></i>
-              <Link href={menu.path}>{menu.name}</Link>
-            </div>
-          );
-        })} */}
-        {/* Example of a logout link */}
-        {/* <div className="menu-item" onClick={logoutHandler}>
-          <i className="fa-solid fa-right-from-bracket"></i>
-          <Link href="/login">Logout</Link>
-        </div> */}
       </div>
     </div>
   );

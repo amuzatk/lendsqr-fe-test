@@ -24,30 +24,52 @@
 
 .menu {
     margin-top: 50px;
-  
-    .item {
-      margin-top: 30px;
-  
-      a {
-        color: white;
+    // border:1px solid red;
+
+    .menuTitle{
+      // border:1px solid red;
+      font-size: 10px;
+      line-height: 18.77px;
+      font-weight: 400;
+
+      
+    }
+    .items{
+      // text-decoration: none;
+      // border:1px solid rgb(0, 38, 255);
+
+      .item{
         text-decoration: none;
-        font-size: 1.2rem;
-      }
-  
-    //   i {
-    //     font-size: 1.2rem;
-    //     margin: 0 15px;
-    //   }
-  
-      &.active {
-        background-color: red;
-        padding: 10px;
-  
-        a, i {
-          color: rgb(51, 1, 1);
+        // border:1px solid rgb(0, 38, 255)
         }
       }
-    }
+
+
+
+
+    // .item {
+    //   margin-top: 30px;
+  
+    //   a {
+    //     color: white;
+    //     text-decoration: none;
+    //     font-size: 1.2rem;
+    //   }
+  
+    // //   i {
+    // //     font-size: 1.2rem;
+    // //     margin: 0 15px;
+    // //   }
+  
+    //   &.active {
+    //     background-color: red;
+    //     padding: 10px;
+  
+    //     a, i {
+    //       color: rgb(51, 1, 1);
+    //     }
+    //   }
+    // }
 }
 
 }
