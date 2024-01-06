@@ -77,7 +77,7 @@ const SideBar = () => {
             <div 
             style={{
               backgroundColor: isActive ? '#F3FCFC' : 'white',
-              borderLeft:isActive ? '4px solid #39CDCC' : 'white',
+              borderLeft:isActive ? '3px solid #39CDCC' : 'white',
             display:"flex",
             flexDirection:"row",
             columnGap:"10px",
