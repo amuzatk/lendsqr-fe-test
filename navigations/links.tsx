@@ -6,7 +6,7 @@ export const VENDOR_DASHBOARD_LINKS = [
   {
     TITLE: 'Users',
     // LINK: '/vendor/[vendorId]',
-    LINK: '/users',
+    LINK: '/dashboard/users',
     SLUG: 'users',
     // PROTECTED: true,
     // ISBUSINESS: true,
@@ -15,7 +15,7 @@ export const VENDOR_DASHBOARD_LINKS = [
   },
   {
     TITLE: 'Guarantors',
-    LINK: '/guarantors',
+    LINK: '/dashboard/guarantors',
     SLUG: 'guarantors',
     // PROTECTED: true,
     // ISBUSINESS: true,
