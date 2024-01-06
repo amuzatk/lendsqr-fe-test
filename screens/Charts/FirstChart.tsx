@@ -64,7 +64,8 @@ const Dashboard = () => {
     flexDirection:"row",
     justifyContent:"center",
     alignItems:"center",
-    gap:"10px"
+    // gap:"10px"
+    padding:"30px"
     }}>
         {/* Scatter Chart */}
       <div style={{ marginTop: '20px' }}>
@@ -102,11 +103,20 @@ const Dashboard = () => {
         {selectedStatus && <p>{`Selected status: ${selectedStatus}`}</p>}
       </div>
       </div>
-
+<div
+style={{
+  display:"flex",
+  flexDirection:"column",
+  justifyContent:"center",
+  // alignItems:"center",
+  // gap:"10px"
+  padding:"30px"
+  }}
+>
       {/* Bar Chart */}
       <div style={{ marginTop: '20px' }}>
         <h2>Account Balance Bar Chart</h2>
-        <BarChart width={1160} height={500} data={getChartData().barChartData}>
+        <BarChart width={1100} height={500} data={getChartData().barChartData}>
           <Bar dataKey="accountBalance" fill="#8884d8" />
           <Legend />
         </BarChart>
@@ -114,15 +124,15 @@ const Dashboard = () => {
 
       {/* Line Chart */}
       <div style={{ 
-        margin: '50px 0',
+        margin: '50px',
          }}>
         <h2>Monthly Income Line Chart</h2>
-        <LineChart width={1160} height={500} data={getChartData().lineChartData}>
+        <LineChart width={1050} height={500} data={getChartData().lineChartData}>
           <Line type="monotone" dataKey="monthlyIncome" stroke="#8884d8" />
           <Legend />
         </LineChart>
       </div>
-
+      </div>
     </div>
   );
 };
