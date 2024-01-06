@@ -2,11 +2,8 @@ import React from 'react';
 
 const SelectTemplate = ({ onChange }) => {
   return (
-    <div style={{
-      // border:"1px solid red",
-      
-    }}>
-      {/* <label htmlFor="simple-dropdown">Select an option:</label> */}
+    <div 
+    >
       <select 
       style={{
         border:"none",
