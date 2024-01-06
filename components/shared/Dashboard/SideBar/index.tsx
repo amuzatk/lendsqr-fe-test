@@ -130,11 +130,19 @@ const SideBar = () => {
     });
   }
 
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleDropdownChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
   return (
     <div className={styles.main}>
       <div className={styles.brief}>
         <Image src={Briefcase} width={16} height={16} alt="Briefcase" />
-        <SelectTemplate />
+        {/* <SelectTemplate /> */}
+        <SelectTemplate onChange={handleDropdownChange} />
+      {/* <p>Selected option: {selectedOption}</p> */}
       </div>
       <div className={styles.menu}>
         <div>
