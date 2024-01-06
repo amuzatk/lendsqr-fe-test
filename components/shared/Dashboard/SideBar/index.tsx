@@ -1,47 +1,66 @@
-// import React, {useState } from "react";
+// import React, { useState } from "react";
 // import styles from "../../../../styles/dashboard/Sidebar.module.scss";
 // import SelectTemplate from "../../Form/SelectTemplate";
 // import Briefcase from "../../../../public/assets/icons/Briefcase.png";
 // import Image from "next/image";
 // import Link from "next/link";
 // import { UserMenu } from "../../../../utils/sidebarData";
-// // import { Link, useLocation, useNavigate } from "react-router-dom";
+// import { VENDOR_DASHBOARD_LINKS} from '../../../../navigations/links'
+// import { useRouter } from 'next/router';
 
-// // import Image from 'n'
 // const SideBar = () => {
-//   // const [sideNav] = useState(true)
-//   // const location = useLocation();
-//   // const navigate = useNavigate();
+//   const [sideNav] = useState(true);
+//   const router = useRouter();
 
-//   // const SidebarMenu = sideNav.isAdmin
-//   // ? AdminMenu
-//   // : user?.isDoctor
-//   // ? DoctorMenu
-//   // : UserMenu;
 //   return (
 //     <div className={styles.main}>
-//       <div className={styles.brief}>
+//       {/* <div className={styles.brief}>
 //         <Image src={Briefcase} width={16} height={16} alt="Briefcase" />
 //         <SelectTemplate />
-//       </div>
-//       <div className="menu">
-//             {  UserMenu.map((menu) => {
-//               const isctive = location.pathname === menu.path;
-//               return (
-//                 <div
-//                   className={`menu-item ${isctive && "active"}`}
-//                   key={menu.path}
+//       </div> */}
+//       <div className={styles.menu}>
+//       {VENDOR_DASHBOARD_LINKS.map((menu) => {
+//           const isActive = router.pathname === menu.LINK;
+//           // const isActive = route === nav.LINK;
+//           // const isCustomer = menu.ISCUSTOMER
+
+//           const handleContent = () => (
+//             <div 
+//             style={{
+//               backgroundColor: isActive ? '#F3FCFC' : 'white',
+//               borderLeft:isActive ? '3px solid #39CDCC' : 'white',
+//             display:"flex",
+//             flexDirection:"row",
+//             columnGap:"10px",
+//             padding:"20px",
+//             // rowGap:"20px"
+//             }}>
+//               {menu.ICON(isActive)}
+//               <div 
+//               style={{
+//                 // color: isActive ? '#213F7D' : '#213F7D'
+//                 color: isActive ? '#213F7D' : '#8294B6',
+//               }}
+//               className={styles.menuTitle}
 //                 >
-//                   <i className={menu.icon}></i>
-//                   <Link href={menu.path}>{menu.name}</Link>
-//                 </div>
-//               );
-//             })}
-//             {/* <div className="menu-item" onClick={logoutHandler}>
-//               <i className="fa-solid fa-right-from-bracket"></i>
-//               <Link to="/login">Logout</Link>
-//             </div> */}
-//           </div>
+//               {menu.TITLE}
+//               </div>
+//             </div>
+//           )
+//           return (
+//             <div className={styles.items}>
+//               <p>CUSTOMERS</p>
+//                <Link className={styles.item} href={menu.LINK}>
+//                 {handleContent()}
+//                </Link>
+//               <p>BUSINESSES</p>
+
+//               <p>SETTINGS</p>
+
+//             </div>
+//           );
+//         })}
+//       </div>
 //     </div>
 //   );
 // };
@@ -54,13 +73,62 @@ import SelectTemplate from "../../Form/SelectTemplate";
 import Briefcase from "../../../../public/assets/icons/Briefcase.png";
 import Image from "next/image";
 import Link from "next/link";
-import { UserMenu } from "../../../../utils/sidebarData";
-import { VENDOR_DASHBOARD_LINKS} from '../../../../navigations/links'
+import { VENDOR_DASHBOARD_LINKS } from '../../../../navigations/links'
 import { useRouter } from 'next/router';
+
+interface LinkItem {
+  TITLE: string;
+  LINK: string;
+  SLUG: string;
+  ISCUSTOMER?: boolean;
+  ISBUSINESS?: boolean;
+  ISSETTINGS?: boolean;
+  ICON: (isActive: boolean) => JSX.Element;
+}
 
 const SideBar = () => {
   const [sideNav] = useState(true);
   const router = useRouter();
+
+  // Group links based on their categories
+  const customerLinks = VENDOR_DASHBOARD_LINKS.filter((link: LinkItem) => link.ISCUSTOMER);
+  const businessLinks = VENDOR_DASHBOARD_LINKS.filter((link: LinkItem) => link.ISBUSINESS);
+  const settingsLinks = VENDOR_DASHBOARD_LINKS.filter((link: LinkItem) => link.ISSETTINGS);
+
+  const renderLinks = (links: LinkItem[]) => {
+    return links.map((menu: LinkItem) => {
+      const isActive = router.pathname === menu.LINK;
+
+      const handleContent = () => (
+        <div
+          style={{
+            backgroundColor: isActive ? '#F3FCFC' : 'white',
+            borderLeft: isActive ? '3px solid #39CDCC' : 'white',
+            display: "flex",
+            flexDirection: "row",
+            columnGap: "10px",
+            padding: "20px",
+          }}>
+          {menu.ICON(isActive)}
+          <div
+            style={{
+              color: isActive ? '#213F7D' : '#8294B6',
+            }}
+            className={styles.menuTitle}>
+            {menu.TITLE}
+          </div>
+        </div>
+      )
+
+      return (
+        <div className={styles.items} key={menu.SLUG}>
+          <Link href={menu.LINK}>
+            {handleContent()}
+          </Link>
+        </div>
+      );
+    });
+  }
 
   return (
     <div className={styles.main}>
@@ -69,41 +137,18 @@ const SideBar = () => {
         <SelectTemplate />
       </div> */}
       <div className={styles.menu}>
-      {VENDOR_DASHBOARD_LINKS.map((menu) => {
-          const isActive = router.pathname === menu.LINK;
-          // const isActive = route === nav.LINK;
-
-          const handleContent = () => (
-            <div 
-            style={{
-              backgroundColor: isActive ? '#F3FCFC' : 'white',
-              borderLeft:isActive ? '3px solid #39CDCC' : 'white',
-            display:"flex",
-            flexDirection:"row",
-            columnGap:"10px",
-            padding:"20px",
-            // rowGap:"20px"
-            }}>
-              {menu.ICON(isActive)}
-              <div 
-              style={{
-                // color: isActive ? '#213F7D' : '#213F7D'
-                color: isActive ? '#213F7D' : '#8294B6',
-              }}
-              className={styles.menuTitle}
-                >
-              {menu.TITLE}
-              </div>
-            </div>
-          )
-          return (
-            <div className={styles.items}>
-               <Link className={styles.item} href={menu.LINK}>
-                {handleContent()}
-               </Link>
-            </div>
-          );
-        })}
+        <div>
+          <p>CUSTOMERS</p>
+          {renderLinks(customerLinks)}
+        </div>
+        <div>
+          <p>BUSINESSES</p>
+          {renderLinks(businessLinks)}
+        </div>
+        <div>
+          <p>SETTINGS</p>
+          {renderLinks(settingsLinks)}
+        </div>
       </div>
     </div>
   );
