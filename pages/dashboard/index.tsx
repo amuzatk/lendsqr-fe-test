@@ -1,13 +1,12 @@
 import React from 'react'
 import Layout from '../../components/Layout'
-import Charts from '../../screens/Charts/FirstChart'
+import Dashboard from '../../screens/Charts/FirstChart'
 
 const dashboard = () => {
   return (
     <Layout isDetailPage={false} >
         <div style={{marginTop:"20px"}}>
-      <h1>Dashboard Page</h1>
-      {/* <Charts /> */}
+      <Dashboard />
         </div>
     </Layout >
   )

@@ -1,25 +1,11 @@
-// import React from 'react'
-
-// const index = () => {
-//   return (
-//     <div>
-      
-//     </div>
-//   )
-// }
-
-// export default index
-
-// Import necessary components and libraries
 import React, { useEffect, useState } from 'react';
-import { Bar, Line, Pie } from 'react-chartjs-2';
+import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, Legend, ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
 import { fetchUsers } from '../../features/user/userActions3';
 
-const Charts = () => {
-  // State to hold the mock data
+const Dashboard = () => {
   const [users, setUsers] = useState([]);
+  const [selectedStatus, setSelectedStatus] = useState(null);
 
-  // Fetch mock data on component mount
   useEffect(() => {
     const fetchData = async () => {
       const mockData = fetchUsers();
@@ -29,82 +15,116 @@ const Charts = () => {
     fetchData();
   }, []);
 
-  // Function to get data for the charts
+  const handlePieClick = (entry) => {
+    setSelectedStatus(entry.name);
+  };
+
   const getChartData = () => {
-    // Extract relevant data from users for the charts
-    // Modify this part based on your specific requirements
-    const barChartData = {
-      labels: users.map((user) => user.userName),
-      datasets: [
-        {
-          label: 'Account Balance',
-          backgroundColor: 'rgba(75,192,192,0.4)',
-          borderColor: 'rgba(75,192,192,1)',
-          borderWidth: 1,
-          data: users.map((user) => parseFloat(user.accountBalance)),
-        },
-      ],
-    };
+    const totalUsers = users.length;
 
-    const lineChartData = {
-      labels: users.map((user) => user.userName),
-      datasets: [
-        {
-          label: 'Monthly Income',
-          fill: false,
-          lineTension: 0.1,
-          backgroundColor: 'rgba(75,192,192,0.4)',
-          borderColor: 'rgba(75,192,192,1)',
-          borderWidth: 1,
-          data: users.map((user) => parseFloat(user.education.monthlyIncome[0])),
-        },
-      ],
-    };
+    const barChartData = users.map((user) => ({
+      name: user.userName,
+      accountBalance: parseFloat(user.accountBalance),
+    }));
 
-    const pieChartData = {
-      labels: ['Active', 'Inactive', 'Pending', 'Blacklisted'],
-      datasets: [
-        {
-          data: users.reduce(
-            (acc, user) => {
-              const status = user.status.array[0];
-              acc[status]++;
-              return acc;
-            },
-            { Active: 0, Inactive: 0, Pending: 0, Blacklisted: 0 }
-          ),
-          backgroundColor: ['green', 'red', 'orange', 'black'],
-        },
-      ],
-    };
+    const lineChartData = users.map((user) => ({
+      name: user.userName,
+      monthlyIncome: parseFloat(user.education.monthlyIncome[0]),
+    }));
+
+    const pieChartData = [
+      { name: 'Active', value: users.filter((user) => user.status.array[0] === 'Active').length },
+      { name: 'Inactive', value: users.filter((user) => user.status.array[0] === 'Inactive').length },
+      { name: 'Pending', value: users.filter((user) => user.status.array[0] === 'Pending').length },
+      { name: 'Blacklisted', value: users.filter((user) => user.status.array[0] === 'Blacklisted').length },
+    ];
 
     return { barChartData, lineChartData, pieChartData };
   };
 
-  // Render the Charts component
+  const getScatterChartData = () => {
+    return users.map((user) => ({
+      name: user.userName,
+      x: parseFloat(user.education.loanRepayment),
+      y: parseFloat(user.accountBalance),
+    }));
+  };
+
   return (
-    <div>
-      <h1>Charts Page</h1>
+    <div
+    // style={{
+    //     display:"flex",
+    //     flexDirection:"column",
+    //     justifyContent:"center",
+    //     alignItems:"center",
+    //     }}
+    >
+<div style={{
+    display:"flex",
+    flexDirection:"row",
+    justifyContent:"center",
+    alignItems:"center",
+    gap:"10px"
+    }}>
+        {/* Scatter Chart */}
+      <div style={{ marginTop: '20px' }}>
+        <h2>Loan Repayment vs Account Balance Scatter Chart</h2>
+        <ScatterChart width={700} height={400}>
+          <XAxis type="number" dataKey="x" name="Loan Repayment" unit=" NGN" />
+          <YAxis type="number" dataKey="y" name="Account Balance" unit=" NGN" />
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          <Scatter data={getScatterChartData()} fill="#8884d8" />
+          <Legend />
+        </ScatterChart>
+      </div>
+
+      {/* Pie Chart */}
+      <div style={{ marginTop: '20px', justifyContent:"center", alignItems:"center", display:"flex", flexDirection:"column" }}>
+        <h2>User Status Pie Chart</h2>
+        <PieChart width={600} height={350}>
+          <Pie
+            data={getChartData().pieChartData}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            fill="#8884d8"
+            label
+            onClick={handlePieClick}
+          >
+            {getChartData().pieChartData.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={`#${Math.floor(Math.random() * 16777215).toString(16)}`} />
+            ))}
+          </Pie>
+          <Legend />
+        </PieChart>
+        {selectedStatus && <p>{`Selected status: ${selectedStatus}`}</p>}
+      </div>
+      </div>
 
       {/* Bar Chart */}
       <div style={{ marginTop: '20px' }}>
         <h2>Account Balance Bar Chart</h2>
-        <Bar data={getChartData().barChartData} />
+        <BarChart width={1160} height={500} data={getChartData().barChartData}>
+          <Bar dataKey="accountBalance" fill="#8884d8" />
+          <Legend />
+        </BarChart>
       </div>
 
       {/* Line Chart */}
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ 
+        margin: '50px 0',
+         }}>
         <h2>Monthly Income Line Chart</h2>
-        <Line data={getChartData().lineChartData} />
+        <LineChart width={1160} height={500} data={getChartData().lineChartData}>
+          <Line type="monotone" dataKey="monthlyIncome" stroke="#8884d8" />
+          <Legend />
+        </LineChart>
       </div>
 
-      {/* Pie Chart */}
-      <div style={{ marginTop: '20px' }}>
-        <h2>User Status Pie Chart</h2>
-        <Pie data={getChartData().pieChartData} />
-      </div>
     </div>
   );
 };
 
-export default Charts;
+export default Dashboard;
