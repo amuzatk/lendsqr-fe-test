@@ -117,7 +117,7 @@ const replaceSpecialChars = (input: string): string => {
 export const generateMockData = (): User[] => {
   const mockData: User[] = [];
 
-  for (let i = 1; i <= 500; i++) {
+  for (let i = 1; i <= 50; i++) {
     const statusArray = ["Inactive", "Pending", "Active", "Blacklisted"];
     const randomStatusIndex = Math.floor(Math.random() * statusArray.length);
     const randomStatus = statusArray[randomStatusIndex];
