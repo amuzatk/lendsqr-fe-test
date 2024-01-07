@@ -174,14 +174,6 @@ const Dashboard = () => {
     return { barChartData, lineChartData, pieChartData };
   };
 
-  // const getScatterChartData = () => {
-  //   return users.map((user) => ({
-  //     name: user.userName,
-  //     x: parseFloat(user.education.loanRepayment),
-  //     y: parseFloat(user.accountBalance),
-  //   }));
-  // };
-
   const handlePieClick = (entry) => {
     setSelectedStatus(entry.name);
   };
