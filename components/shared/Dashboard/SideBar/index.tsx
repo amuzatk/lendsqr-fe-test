@@ -40,7 +40,10 @@ const SideBar = () => {
             display: "flex",
             flexDirection: "row",
             columnGap: "10px",
-            padding: "20px",
+            paddingLeft: "20px",
+            minHeight:"40px",
+            // justifyContent:"center"
+            alignItems:"center"
           }}>
           {menu.ICON(isActive)}
           <div
