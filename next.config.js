@@ -1,16 +1,3 @@
-// module.exports = {
-//     pageDataCollectionTimeout: 120000,
-//   };
-  
-//   module.exports = {
-//     images: {
-//       domains: ['cloudflare-ipfs.com'],
-//     },
-//     pageDataCollectionTimeout: 120000,
-//   };
-
-
- // next.config.js
 module.exports = {
     images: {
       domains: ['i.pravatar.cc'],
@@ -23,6 +10,5 @@ module.exports = {
   
       return config;
     },
-    // pageDataCollectionTimeoutMillis: 120000, // Use the correct option name
   };
   

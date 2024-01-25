@@ -88,7 +88,7 @@ const UserInfo: React.FC<UserInfo3Props> = ({
   const realData = filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   if (isLoading) return <span style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className={styles.loading}><Spin size="large" /></span>;
-  if (isLoading) return <span style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className={styles.loading}><Alert message="Error fetching data" type="error" /></span>;
+  if (isError) return <span style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className={styles.loading}><Alert message="Error fetching data" type="error" /></span>;
  
   // if (isError) return <Alert message="Error fetching data" type="error" />;
 
@@ -235,7 +235,6 @@ const UserInfo: React.FC<UserInfo3Props> = ({
         values.status.includes(item.status.array[0])
       );
     }
-  
                 setFilteredData(newFilteredData);
               }}
   
