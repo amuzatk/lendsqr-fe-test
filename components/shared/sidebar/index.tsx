@@ -28,13 +28,10 @@ type SideBarProps = {
 };
 
 const SideBar = ({ selectedOrganization, onOrganizationChange }: SideBarProps) => {
-  const [sideNav] = useState(true);
+  // const [sideNav] = useState(true);
   const router = useRouter();
 
   const onLogout = () => {
-    // Perform logout logic here
-    // ...
-
     // Display a success message
     toastHandler.success('Logout successful');
 
