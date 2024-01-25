@@ -3,15 +3,15 @@ import styles from "../../styles/dashboard/Analytics.module.scss";
 import Image from "next/image";
 
 interface AnalyticsCardProps {
-  data: {
+  item: {
     image: string;
     title: string;
     amount: string;
   };
 }
 
-const AnalyticsCard: React.FC<AnalyticsCardProps> = ({ data }) => {
-  const { image, title, amount } = data;
+const AnalyticsCard: React.FC<AnalyticsCardProps> = ({ item }) => {
+  const { image, title, amount } = item;
 
   return (
     <div className={styles.container}>

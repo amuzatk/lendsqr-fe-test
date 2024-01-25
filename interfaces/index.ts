@@ -1,9 +1,10 @@
-interface MonthlyIncome {
-  [key: number]: string;
+export interface MonthlyIncome {
   length: number;
+  [index: number]: string;
 }
 
- interface Education {
+
+export interface Education {
   duration: string;
   employmentStatus: string;
   level: string;
@@ -13,8 +14,7 @@ interface MonthlyIncome {
   sector: string;
 }
 
-
-interface Guarantor {
+export interface Guarantor {
   address: string;
   email?: string;
   relationship?: string;
@@ -24,8 +24,7 @@ interface Guarantor {
   phoneNumber?: string;
 }
 
-
- interface Profile {
+export interface Profile {
   address?: string;
   email?: string;
   avatar?: string;
@@ -40,13 +39,13 @@ interface Guarantor {
   phoneNumber?: string;
 }
 
- interface Socials {
+export interface Socials {
   facebook: string;
   instagram: string;
   twitter: string;
 }
 
-interface Status {
+export interface Status {
   [key: number]: string;
   array: string[];
 }
@@ -70,4 +69,3 @@ export interface User {
   userName?: string;
   status?: Status;
 }
-

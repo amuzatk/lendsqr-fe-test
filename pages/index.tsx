@@ -5,6 +5,7 @@ import Logo from '../public/assets/logo/logo.webp';
 import Image from 'next/image';
 import styles from '../styles/pages/Login.module.scss';
 import { motion, useAnimation } from 'framer-motion';
+import React from 'react';
 
 const Login = () => {
   const router = useRouter();

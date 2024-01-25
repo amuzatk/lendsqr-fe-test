@@ -32,14 +32,14 @@ interface UserInfo3Props {
   selectedOrganization: string;
   searchResults: User[];
   onSearchResultsChange: (results: User[]) => void;
-  onDummyVariableChange: (newDummyVariable: any) => void; // Define the callback function prop
+  onForceRerender: (newDummyVariable: any) => void; // Define the callback function prop
 }
 
 const UserInfo: React.FC<UserInfo3Props> = ({ 
   selectedOrganization, 
   searchResults, 
   onSearchResultsChange,
-  onDummyVariableChange, // Receive the callback function prop
+  onForceRerender, // Receive the callback function prop
  }) => {
   const [form] = Form.useForm();
   const [isFilterVisible, setFilterVisible] = useState(false);
@@ -88,7 +88,9 @@ const UserInfo: React.FC<UserInfo3Props> = ({
   const realData = filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   if (isLoading) return <span style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className={styles.loading}><Spin size="large" /></span>;
-  if (isError) return <Alert message="Error fetching data" type="error" />;
+  if (isLoading) return <span style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className={styles.loading}><Alert message="Error fetching data" type="error" /></span>;
+ 
+  // if (isError) return <Alert message="Error fetching data" type="error" />;
 
   const updateTableData = () => {
     setDummyState(Math.random());
@@ -97,7 +99,7 @@ const UserInfo: React.FC<UserInfo3Props> = ({
   const setDummyState = (value: number | React.SetStateAction<null>) => {
     // Update a state variable to trigger a re-render
     setDummyVariable(value);
-    onDummyVariableChange(value); // Call the callback function to send data to UsersDashboard
+    onForceRerender(value); // Call the callback function to send data to UsersDashboard
   };
 
   const handleBlacklist = (userId: string) => {
@@ -398,40 +400,74 @@ const UserInfo: React.FC<UserInfo3Props> = ({
         key: "dateJoined",
         className: styles.date,
       },
+      // {
+      //   title: (
+      //     <div 
+      //     className={styles.titleContainer}
+  
+      //     ><span className={`${styles.columnTitle} ${styles.statusTitle}`}>STATUS</span><Image
+      //       src={Filter}
+      //       alt="Custom Filter Icon"
+      //       width={13}
+      //       height={10}
+      //       className={styles.filterIcon}
+      //        /></div>
+      //   ),
+      //   dataIndex: "status",
+      //   key: "status",
+      //   className: styles.status,
+      //   render: (status: {}) => {
+      //     // Define styles based on the status value
+      //     let statusStyle = {};
+      //     if (status === "Inactive") {
+      //       statusStyle = { color: "#545F7D", borderRadius:"25px", padding:"6px 12px", background:"#f5f5f7"  };
+      //     } else if (status === "Blacklisted") {
+      //       statusStyle = { color: "#E4033B", borderRadius:"25px", padding:"6px 12px", background:"#fce6eb" }; 
+  
+      //     } else if (status === "Active") {
+      //       statusStyle = { color: "#39CD62" , borderRadius:"25px", padding:"6px 12px", background:"#f3fcf6"};
+      //     } else if (status === "Pending") {
+      //       statusStyle = { color: "#E9B200" , borderRadius:"25px", padding:"6px 12px", background:"#fdf7e6" }; 
+      //     }
+    
+      //     return <span style={statusStyle}>{status}</span>;
+      //   },
+      // },
+
+
       {
         title: (
-          <div 
-          className={styles.titleContainer}
-  
-          ><span className={`${styles.columnTitle} ${styles.statusTitle}`}>STATUS</span><Image
-            src={Filter}
-            alt="Custom Filter Icon"
-            width={13}
-            height={10}
-            className={styles.filterIcon}
-             /></div>
+          <div className={styles.titleContainer}>
+            <span className={`${styles.columnTitle} ${styles.statusTitle}`}>STATUS</span>
+            <Image
+              src={Filter}
+              alt="Custom Filter Icon"
+              width={13}
+              height={10}
+              className={styles.filterIcon}
+            />
+          </div>
         ),
         dataIndex: "status",
         key: "status",
         className: styles.status,
-        render: (status: {}) => {
+        render: (status: string) => { // Specify the type of status as string
           // Define styles based on the status value
           let statusStyle = {};
           if (status === "Inactive") {
-            statusStyle = { color: "#545F7D", borderRadius:"25px", padding:"6px 12px", background:"#f5f5f7"  };
+            statusStyle = { color: "#545F7D", borderRadius: "25px", padding: "6px 12px", background: "#f5f5f7" };
           } else if (status === "Blacklisted") {
-            statusStyle = { color: "#E4033B", borderRadius:"25px", padding:"6px 12px", background:"#fce6eb" }; 
-  
+            statusStyle = { color: "#E4033B", borderRadius: "25px", padding: "6px 12px", background: "#fce6eb" };
           } else if (status === "Active") {
-            statusStyle = { color: "#39CD62" , borderRadius:"25px", padding:"6px 12px", background:"#f3fcf6"};
+            statusStyle = { color: "#39CD62", borderRadius: "25px", padding: "6px 12px", background: "#f3fcf6" };
           } else if (status === "Pending") {
-            statusStyle = { color: "#E9B200" , borderRadius:"25px", padding:"6px 12px", background:"#fdf7e6" }; 
+            statusStyle = { color: "#E9B200", borderRadius: "25px", padding: "6px 12px", background: "#fdf7e6" };
           }
-    
+      
           return <span style={statusStyle}>{status}</span>;
         },
       },
-
+      
     {
       dataIndex: "action",
       key: "action",
