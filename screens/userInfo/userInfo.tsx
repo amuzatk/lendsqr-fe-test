@@ -500,7 +500,7 @@ const UserInfo: React.FC<UserInfo3Props> = ({
                 <div 
                 >
                   <Popconfirm
-                    title={`Are you sure you want to blacklist ${record.userName}?`}
+                    title={`Are you sure you want to activate ${record.userName}?`}
                     onConfirm={() => handleActivate(record.id)}
                     okText="Yes"
                     cancelText="No"
