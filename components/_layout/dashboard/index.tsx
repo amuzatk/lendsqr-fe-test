@@ -114,13 +114,8 @@ const Layout = ({
           className={styles.content}>
             {mainDash ? (
               <>
-                {/* <h1>Users</h1> */}
                 <h1>{pageTitle}</h1>
                 <div className={styles.header}>
-                  {/* {data.map((data, index) => (
-                    <AnalyticsCard data={data} />
-                  ))} */}
-
 {data.map((item, index) => (
                     <AnalyticsCard item={item} />
                   ))}

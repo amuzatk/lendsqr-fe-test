@@ -36,7 +36,7 @@ const SideBar = ({ selectedOrganization, onOrganizationChange }: SideBarProps) =
     toastHandler.success('Logout successful');
 
     // Redirect to login or any desired page
-    router.push('/');
+    router.push('/login');
   };
 
   // Group links based on their categories
@@ -132,6 +132,20 @@ const SideBar = ({ selectedOrganization, onOrganizationChange }: SideBarProps) =
           }}>
           {renderLinks(logoutLinks)}
         </div>
+        <div
+        style={{
+          fontSize:"12px",
+          fontWeight:"400",
+          lineHeight:"14.08px",
+          letterSpacing:"0px",
+          // textAlign:"right",
+          // border:"1px solid red",
+          paddingLeft:"14px",
+          marginTop:"40px",
+          color:"#213F7D"
+
+        }}
+        >v1.2.3</div>
       </div>
     </div>
     </>
