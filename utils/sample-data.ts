@@ -36,6 +36,7 @@ const generateMockAnalyticsData = async (): Promise<{ users: string; activeUsers
 export const useAnalyticsData = async (): Promise<AnalyticsData[]> => {
   const generatedData = await generateMockAnalyticsData();
 
+  // integrating amount from faker generated data into the static data
   const analyticsData: AnalyticsData[] = [
     {
       image: "/assets/icons/AnalyticIcon1.webp",

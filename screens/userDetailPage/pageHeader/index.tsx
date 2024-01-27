@@ -98,6 +98,7 @@ const PageHeader = () => {
   // Render user profile
   const firstName = userData?.profile?.firstName;
   const lastName = userData?.profile?.lastName;
+  const fullName = `${firstName} ${lastName}`
 
   return (
     <div className={styles.container}>
@@ -111,7 +112,7 @@ const PageHeader = () => {
         </div>
         <div className={styles.right}>
           <Popconfirm
-            title={`Are you sure you want to blacklist this ${firstName} ${lastName}?`}
+            title={`Are you sure you want to blacklist this ${fullName}?`}
             onConfirm={handleBlacklistClick}
             okText="Yes"
             cancelText="No"
@@ -121,7 +122,7 @@ const PageHeader = () => {
             </button>
           </Popconfirm>
           <Popconfirm
-            title={`Are you sure you want to activate this ${firstName} ${lastName}?`}
+            title={`Are you sure you want to activate this ${fullName}?`}
             onConfirm={handleActivateClick}
             okText="Yes"
             cancelText="No"
