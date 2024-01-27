@@ -36,7 +36,7 @@ const SideBar = ({ selectedOrganization, onOrganizationChange }: SideBarProps) =
     toastHandler.success('Logout successful');
 
     // Redirect to login or any desired page
-    router.push('/login');
+    router.push('/');
   };
 
   // Group links based on their categories
