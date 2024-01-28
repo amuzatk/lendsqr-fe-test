@@ -43,10 +43,16 @@ const PageHeader = () => {
     }
   }, [userId]);
 
+  // Render user profile
+  const firstName = userData?.profile?.firstName;
+  const lastName = userData?.profile?.lastName;
+  const fullName = `${firstName} ${lastName}`
+
   const handleBlacklistClick = () => {
     if (userData) {
       if (userData.status.array[0] === 'Blacklisted') {
-        toastHandler.error('This user is already blacklisted.');
+        // toastHandler.error('This user is already blacklisted.');
+        toastHandler.error(`${fullName} has already been blacklisted.`);
       } else {
         // Update user status to "Blacklisted"
         const updatedUser = { ...userData, status: { array: ['Blacklisted'] } };
@@ -59,7 +65,8 @@ const PageHeader = () => {
         localStorage.setItem('users', JSON.stringify(updatedUsers));
 
         // Show toast message
-        toastHandler.success('User blacklisted successfully');
+        // toastHandler.success('User blacklisted successfully');
+        toastHandler.success(`${fullName} blacklisted successfully`);
 
         // Close the Popover after success
         setTimeout(() => {
@@ -72,7 +79,8 @@ const PageHeader = () => {
   const handleActivateClick = () => {
     if (userData) {
       if (userData.status.array[0] === 'Active') {
-        toastHandler.error('This user is already active.');
+        // toastHandler.error('This user is already active.');
+        toastHandler.error(`${fullName} has already been activated.`);
       } else {
         // Update user status to "Active"
         const updatedUser = { ...userData, status: { array: ['Active'] } };
@@ -85,7 +93,7 @@ const PageHeader = () => {
         localStorage.setItem('users', JSON.stringify(updatedUsers));
 
         // Show toast message
-        toastHandler.success('User activated successfully');
+        toastHandler.success(`${fullName} activated successfully`);
 
         // Close the Popover after success
         setTimeout(() => {
@@ -94,11 +102,6 @@ const PageHeader = () => {
       }
     }
   };
-
-  // Render user profile
-  const firstName = userData?.profile?.firstName;
-  const lastName = userData?.profile?.lastName;
-  const fullName = `${firstName} ${lastName}`
 
   return (
     <div className={styles.container}>
@@ -112,7 +115,7 @@ const PageHeader = () => {
         </div>
         <div className={styles.right}>
           <Popconfirm
-            title={`Are you sure you want to blacklist this ${fullName}?`}
+            title={`Are you sure you want to blacklist ${fullName}?`}
             onConfirm={handleBlacklistClick}
             okText="Yes"
             cancelText="No"
@@ -122,7 +125,7 @@ const PageHeader = () => {
             </button>
           </Popconfirm>
           <Popconfirm
-            title={`Are you sure you want to activate this ${fullName}?`}
+            title={`Are you sure you want to activate ${fullName}?`}
             onConfirm={handleActivateClick}
             okText="Yes"
             cancelText="No"
