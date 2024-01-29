@@ -9,7 +9,7 @@ The App is a snippet of the Lendsqr Admin console for lenders.
 Belw video URLs briefly explain what the admin or visitor will likely to come across while exploring the app
 
 - [Video-1](https://drive.google.com/file/d/1CA1bNh-V7Rz0LYeF2Oc062j-Ism1Tlx5/view?usp=drive_link)
-- [Video-2](https://drive.google.com/file/d/1Cqflk3l5_2geu9deTxY7BQwRG26YjDlM/view?usp=drive_link)
+- [Video-2](https://drive.google.com/file/d/1Cqflk3l5_2geu9deTxY7BQwRG26YjDlM/view?usp=drive_link) (This is unintentionaly accompanied with some background noise, but the message is well passed!)
 
 ## Built With
 
