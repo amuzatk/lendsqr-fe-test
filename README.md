@@ -1,14 +1,15 @@
 
-<!-- # lendsqr-fe-test
-A snippet of the Lendsqr Admin console for lenders -->
-
-
 # About App
 
 Lending is profitable but also difficult. But with Lendsqr, you can launch and scale your loan business easily and profitably. Start lending using Lendsqr!.
 
 The App is a snippet of the Lendsqr Admin console for lenders.
 [Page](https://kazeem-amuzat-lendsqr-fe-test.vercel.app/)
+
+Belw video URLs briefly explain what the admin or visitor will likely to come across with while exploring the app
+
+- [Video-1](https://drive.google.com/file/d/1CA1bNh-V7Rz0LYeF2Oc062j-Ism1Tlx5/view?usp=drive_link)
+- [Video-2](https://drive.google.com/file/d/1Cqflk3l5_2geu9deTxY7BQwRG26YjDlM/view?usp=drive_link)
 
 ## Built With
 
@@ -19,18 +20,6 @@ The App is a snippet of the Lendsqr Admin console for lenders.
 - [Faker-API](https://github.com/faker-js/faker)
 - [Ant Design](https://ant.design/components/overview/)
 
-### Requirements
-
-- Create a `.env.local` file and add the following to it;
-
-  - `NEXT_PUBLIC_BASE_URL`
-  - `NEXT_PUBLIC_PAYSTACK_KEY`
-  - `WAITING_LIST_BASE_URL`
-  - `WAITING_LIST_BIN_ID`
-  - `WAITING_LIST_API_KEY`
-  - `NEXT_PUBLIC_GOOGLE_ANALYTICS`
-  - `SITE_URL`
-  - `NEXT_PUBLIC_LOCATION`
 
 - Install eslint and prettier extensions on your code editor.
   EsLint highlights all the possible errors while prettier formats the code while saving.
