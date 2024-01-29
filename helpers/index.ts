@@ -1,4 +1,3 @@
-// Add country eg 'en-US' or 'en-NG' then currency 'NGN'
 export const currencyFormatter = (
     country: string,
     currency: string,

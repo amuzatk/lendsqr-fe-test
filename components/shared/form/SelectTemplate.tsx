@@ -37,18 +37,7 @@ const SelectTemplate: React.FC<SelectTemplateProps> = ({ onChange, selectedOrgan
     const filteredUsers = originalData.filter(
       (user) => user?.orgName.toLowerCase().includes(searchTerm)
     );
-
-
-    // const filteredUsers = originalData.filter((user) => {
-    //   // Check if user.orgName is defined before accessing it
-    //   if (user.orgName && user.orgName.toLowerCase().includes(searchTerm)) {
-    //     return true;
-    //   }
-    //   return false;
-    // });
     
-
-
     setFilteredData(filteredUsers);
     setDropdownOpen(true);
   };

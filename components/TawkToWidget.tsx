@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const TawkToWidget = () => {
   useEffect(() => {
     const tawkToScript = document.createElement('script');
-    tawkToScript.src = 'https://embed.tawk.to/64b56ed8cc26a871b028f37a/1h5ibhvun';
+    tawkToScript.src = process.env.TAWKTO_SCRIPT_URL;
     tawkToScript.async = true;
     document.body.appendChild(tawkToScript);
     return () => {

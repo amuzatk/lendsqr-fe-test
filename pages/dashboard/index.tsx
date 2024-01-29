@@ -32,59 +32,10 @@ const AdminDashboard = () => {
       }}
     >
       <div style={{ marginTop: "40px" }}>
-        {/* <Dashboard
-         /> */}
-
-<Dashboard
-          // dummyVariable={dummyVariable}
-          // onDummyVariableChange={(newDummyVariable) => {
-          //   setDummyVariable(newDummyVariable);
-          //   handleDummyVariableChange(newDummyVariable);
-          // }}
-        />
+<Dashboard />
       </div>
     </Layout>
   );
 };
 
 export default AdminDashboard;
-
-
-// import React, { useState } from 'react';
-// import { User } from '../../interfaces';
-// import Layout from '../../components/_layout/dashboard';
-// import DashboardCharts from '../../screens/charts/dashboardCharts';
-
-// const AdminDashboard = () => {
-//   // This is preventing error by providing empty state
-//   // const [selectedOrganization, setSelectedOrganization] = useState('');
-//   // const [searchResults, setSearchResults] = useState<User[]>([]); // Define the state for searchResults
-
-
-//   // State for dummyVariable
-//   // const [dummyVariable, setDummyVariable] = useState<number>(Math.random());
-
-//   // Function to handle dummyVariable change
-//   // const handleDummyVariableChange = (newDummyVariable) => {
-//   //   // Handle the change, if needed
-//   //   console.log('Received new dummyVariable WITHIN AdminDashboard:', newDummyVariable);
-//   // };
-
-//   return (
-//     <Layout
-//       isDetailPage={false}
-//       // selectedOrganization={selectedOrganization}
-//       // onOrganizationChange={setSelectedOrganization}
-//     >
-//       <div style={{ marginTop: "40px" }}>
-//         {/* <Dashboard
-//          /> */}
-
-// <DashboardCharts
-//         />
-//       </div>
-//     </Layout>
-//   );
-// };
-
-// export default AdminDashboard;

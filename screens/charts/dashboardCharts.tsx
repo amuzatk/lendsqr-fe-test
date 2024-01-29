@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, Legend, ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
-// import styles from "../../styles/dashboardCharts/Charts.module.scss";
+import { PieChart, Pie, Cell, Legend, ScatterChart, Scatter, XAxis, YAxis, Tooltip } from 'recharts';
 import styles from "../../styles/dashboard/Charts.module.scss";
 import { Alert, Spin } from 'antd';
 import { User } from '../../interfaces';
 import { fetchUsers } from '../../features/users/userActions';
 
 const DashboardCharts = ({ 
-  // dummyVariable, 
  }) => {
-  // const [users, setUsers] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [originalData, setOriginalData] = useState<Array<User>>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,13 +29,6 @@ const DashboardCharts = ({
     }
   };
 
-    // // useEffect to fetch and store users on dummyVariable change
-    // useEffect(() => {
-    //   fetchAndStoreUsers();
-    // console.log('use dummyVariable to invoke fetchAndStoreUsers within DashboardCharts:', dummyVariable);
-
-    // }, [dummyVariable]);
-
   useEffect(() => {
     // Check if users are already stored in local storage
     const storedUsers = localStorage.getItem('users');
@@ -53,13 +43,6 @@ const DashboardCharts = ({
       fetchAndStoreUsers();
     }
   }, []);
-
-  // // Call onDummyVariableChange when dummyVariable changes
-  // useEffect(() => {
-  //   // onDummyVariableChange(dummyVariable);
-  //   console.log('Received dummyVariable from UserInfo3 within DashboardCharts:', dummyVariable);
-  // }, [dummyVariable]);
-
 
   if (isLoading) return <span style={{
     // border:"2px solid green",
@@ -76,7 +59,7 @@ const DashboardCharts = ({
 
 
     const getChartData = () => {
-    const totalUsers = originalData.length;
+    // const totalUsers = originalData.length;
 
     const barChartData = originalData.map((user) => ({
       name: user.userName,
@@ -112,29 +95,7 @@ const DashboardCharts = ({
 
   return (
     <div className={styles.container}>
-      {/* <h1>DashboardCharts Page</h1> */}
-
-      {/* Bar Chart */}
-      {/* <div style={{ marginTop: '20px' }}>
-        <h2>Account Balance Bar Chart</h2>
-        <BarChart width={500} height={300} data={getChartData().barChartData}>
-          <Bar dataKey="accountBalance" fill="#8884d8" />
-          <Legend />
-        </BarChart>
-      </div> */}
-
-      {/* Line Chart */}
-      {/* <div style={{ marginTop: '20px' }}>
-        <h2>Monthly Income Line Chart</h2>
-        <LineChart width={500} height={300} data={getChartData().lineChartData}>
-          <Line type="monotone" dataKey="monthlyIncome" stroke="#8884d8" />
-          <Legend />
-        </LineChart>
-      </div> */}
-
-      {/* Pie Chart */}
       <div style={{ marginTop: '20px' }}>
-        {/* <h2>User Status Pie Chart</h2> */}
         <div className={styles.chart}>
         <PieChart width={250} height={250}>
           <Pie
@@ -158,9 +119,7 @@ const DashboardCharts = ({
         {selectedStatus && <p>{`Selected status: ${selectedStatus}`}</p>}
       </div>
 
-      {/* Scatter Chart */}
       <div style={{ marginTop: '20px' }}>
-        {/* <h2>Loan Repayment vs Account Balance Scatter Chart</h2> */}
         <div className={styles.chart}>
         <ScatterChart width={250} height={250}>
           <XAxis type="number" dataKey="x" name="Loan Repayment" unit=" USD" />

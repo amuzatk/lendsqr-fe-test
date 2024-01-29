@@ -1,8 +1,7 @@
 @import "../variables.scss";
 
 .placehold::placeholder {
-    // border: 1px solid red;
-    color: #213F7D;
+    color: $color--2;
     opacity: 0.7;
   }
   
