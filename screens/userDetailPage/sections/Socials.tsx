@@ -32,14 +32,14 @@ import { User } from "../../../interfaces";
             <span className={styles.name}>{instagram}</span>
           </div>
         </div>
-        <div style={{visibility:"hidden"}} className={styles.forth}>
+        <div style={{visibility:"hidden"}} className={styles.forthSocial}>
         <div className={styles.cont}>
 
             <span className={styles.full}>BVN</span>
             <span className={styles.name}>09087654432</span>
           </div>
         </div>
-        <div style={{visibility:"hidden"}} className={styles.fifth}>
+        <div style={{visibility:"hidden"}} className={styles.fifthSocial}>
         <div className={styles.cont}>
 
             <span className={styles.full}>GENDER</span>

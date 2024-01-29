@@ -40,7 +40,7 @@ import { User } from "../../../interfaces";
             <span className={styles.name}>{relationship}</span>
           </div>
         </div>
-        <div style={{visibility:"hidden"}} className={styles.fifth}>
+        <div style={{visibility:"hidden"}} className={styles.fifthGuarantor}>
         <div className={styles.cont}>
 
             <span className={styles.full}>GENDER</span>

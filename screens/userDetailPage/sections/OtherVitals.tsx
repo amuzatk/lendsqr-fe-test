@@ -11,7 +11,10 @@ import { User } from "../../../interfaces";
     const relationship = userDetails?.guarantor?.relationship;
   return (
     <div style={{paddingBottom:"46px"}} className={styles.container}>
-      <h1 style={{visibility:"hidden"}}>Guarantor</h1>
+      <h1 
+      style={{visibility:"hidden"}}
+      className={styles.header}
+      >Guarantor</h1>
       <div className={styles.main}>
         <div className={styles.first}>
         <div className={styles.cont}>
@@ -40,7 +43,7 @@ import { User } from "../../../interfaces";
             <span className={styles.name}>{relationship}</span>
           </div>
         </div>
-        <div style={{visibility:"hidden"}} className={styles.fifth}>
+        <div style={{visibility:"hidden"}} className={styles.fifthGuarantor}>
         <div className={styles.cont}>
             <span className={styles.full}>GENDER</span>
             <span className={styles.name}>{gender}</span>

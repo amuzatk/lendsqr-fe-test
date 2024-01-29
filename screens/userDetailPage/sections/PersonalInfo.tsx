@@ -1,6 +1,6 @@
 import React from "react";
 import styles from '../../../styles/dashboard/PersonalInfo.module.scss';
-import { Alert,Divider } from 'antd';
+import { Divider } from 'antd';
 import { User } from "../../../interfaces";
 
   const PersonalInfo: React.FC<{ userDetails: User }> = ({ userDetails }) => {

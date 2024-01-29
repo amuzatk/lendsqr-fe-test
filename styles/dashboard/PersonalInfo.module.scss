@@ -1,21 +1,17 @@
+@import "../variables.scss";
+
 .container{
     // border: 1px solid red;
     display: flex;
     flex-direction: column;
-    padding: 0px 30px;
-    // border-bottom: 1px solid #213F7D;
-    // padding-bottom: 10px;
-    // padding-top: 30px;
-    // margin-bottom: -5px;
-    
+    padding: 0px 30px;    
     h1{
-        // font-family: Work Sans;
 font-size: 16px;
 font-weight: 500;
 line-height: 19px;
 letter-spacing: 0px;
 text-align: left;
-color: #213F7D;
+color: $color--1;
 
     }
 
@@ -26,38 +22,26 @@ color: #213F7D;
         justify-content: space-between;
         align-items: flex-start;
     flex-wrap: wrap;
-
-        // padding-right: 60px;
-
-        .first, .second, .third, .forth, .fifth{
+        .first, .second, .third, .forth,.forthSocial,.fifthSocial,.fifthGuarantor, .fifth{
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
             gap: 30px;
-            // padding: 28px 0;
-            // padding: 28px 0;
-
             .cont{
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
             gap: 8px;
-
-
             .full{
-                font-family: Work Sans;
+                // font-family: Work Sans;
     font-size: 12px;
     font-weight: 400;
     line-height: 14px;
     letter-spacing: 0px;
     text-align: left;
-    // color: #545F7D;
-    // color: #5f6985;
-    color: #949bae;
-    // color: #69738e;
-    // color: #5e6985;
+    color: $color--3;
     text-transform: uppercase;    
             }
 
@@ -68,18 +52,41 @@ color: #213F7D;
     line-height: 19px;
     letter-spacing: 0px;
     text-align: left;
-    color: #545F7D;  
+    color: $color--1;
             }
 
             }
 
         }
+
+        @media only screen and (max-width: 500px){
+            .forthSocial, .fifthSocial,.fifthGuarantor{
+                display: none;
+            }
+        }
+    }
+    @media only screen and (max-width: 500px){
+    .header{
+        display: none;
+    }
+}
+}
+
+
+@media only screen and (max-width: 768px){
+    .container{
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 1100px){
+    .main{
+        gap: 20px;
     }
 }
 
 @media only screen and (min-width: 1366px){
     .main{
-        // border: 1px solid red;
         padding-right: 60px;
     }
 }

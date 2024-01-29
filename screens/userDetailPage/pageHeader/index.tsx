@@ -65,7 +65,6 @@ const PageHeader = () => {
         localStorage.setItem('users', JSON.stringify(updatedUsers));
 
         // Show toast message
-        // toastHandler.success('User blacklisted successfully');
         toastHandler.success(`${fullName} blacklisted successfully`);
 
         // Close the Popover after success
@@ -79,7 +78,6 @@ const PageHeader = () => {
   const handleActivateClick = () => {
     if (userData) {
       if (userData.status.array[0] === 'Active') {
-        // toastHandler.error('This user is already active.');
         toastHandler.error(`${fullName} has already been activated.`);
       } else {
         // Update user status to "Active"
